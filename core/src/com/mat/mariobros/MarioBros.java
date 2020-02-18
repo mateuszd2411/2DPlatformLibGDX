@@ -5,6 +5,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mat.mariobros.Screens.PlayScreen;
 
 public class MarioBros extends Game {
+	public static final int V_WIDTH = 400;
+	public static final int V_HIGHT = 208;
+
 	public SpriteBatch batch;
 
 	
