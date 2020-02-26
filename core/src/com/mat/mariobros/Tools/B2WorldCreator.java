@@ -60,6 +60,7 @@ public class B2WorldCreator {
 
         }
 
+
         for (MapObject object : map.getLayers().get(4).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
 
