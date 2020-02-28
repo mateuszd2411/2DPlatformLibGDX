@@ -26,6 +26,7 @@ import com.mat.mariobros.MarioBros;
 import com.mat.mariobros.Scenes.Hud;
 import com.mat.mariobros.Sprites.Mario;
 import com.mat.mariobros.Tools.B2WorldCreator;
+import com.mat.mariobros.Tools.WorldContactListener;
 
 import static sun.audio.AudioPlayer.player;
 
@@ -70,6 +71,8 @@ public class PlayScreen implements Screen {
         new B2WorldCreator(world, map);
 
         player = new Mario(world, this);
+
+        world.setContactListener(new WorldContactListener());
 
     }
 
