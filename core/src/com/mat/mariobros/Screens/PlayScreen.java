@@ -25,6 +25,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mat.mariobros.MarioBros;
 import com.mat.mariobros.Scenes.Hud;
+import com.mat.mariobros.Sprites.Goomba;
 import com.mat.mariobros.Sprites.Mario;
 import com.mat.mariobros.Tools.B2WorldCreator;
 import com.mat.mariobros.Tools.WorldContactListener;
@@ -49,6 +50,7 @@ public class PlayScreen implements Screen {
     private Box2DDebugRenderer b2dr;
 
     private Mario player;
+    private Goomba goomba;
 
     private Music music;
 
@@ -71,15 +73,17 @@ public class PlayScreen implements Screen {
         world = new World(new Vector2(0,-10), true);
         b2dr = new Box2DDebugRenderer();
 
-        new B2WorldCreator(world, map);
+        new B2WorldCreator(this);
 
-        player = new Mario(world, this);
+        player = new Mario(this);
 
         world.setContactListener(new WorldContactListener());
 
         music = MarioBros.manager.get("audio/music/mario_music.ogg", Music.class);
         music.setLooping(true);
         music.play();
+
+        goomba = new Goomba(this, .32f, .32f);
 
     }
 
@@ -108,6 +112,7 @@ public class PlayScreen implements Screen {
         world.step(1f/60f,6,2);
 
         player.update(dt);
+        goomba.update(dt);
         hud.update(dt);
 
         gamecam.position.x = player.b2body.getPosition().x;
@@ -132,6 +137,7 @@ public class PlayScreen implements Screen {
         game.batch.setProjectionMatrix(gamecam.combined);
         game.batch.begin();
         player.draw(game.batch);
+        goomba.draw(game.batch);
         game.batch.end();
 
         game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
@@ -143,6 +149,13 @@ public class PlayScreen implements Screen {
     public void resize(int width, int height) {
         gamePort.update(width,height);
 
+    }
+
+    public TiledMap getMap(){
+        return map;
+    }
+    public World getWorld(){
+        return world;
     }
 
     @Override
