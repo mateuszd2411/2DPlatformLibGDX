@@ -191,6 +191,14 @@ public class Mario extends Sprite {
         MarioBros.manager.get("audio/sounds/powerup.wav", Sound.class).play();
     }
 
+    public boolean isDead(){
+        return marioIsDead;
+    }
+
+    public float getStateTimer(){
+        return stateTimer;
+    }
+
     public boolean isBig() {
         return marioIsBig;
     }
