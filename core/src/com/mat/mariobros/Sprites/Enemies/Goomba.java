@@ -1,5 +1,6 @@
 package com.mat.mariobros.Sprites.Enemies;
 
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.Animation;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -92,12 +93,14 @@ public class Goomba extends Enemy {
     public void draw(Batch batch){
         if (!destroyed || stateTime <1)
             super.draw(batch);
+
     }
 
     @Override
     public void hitOnHead() {
 
         setToDestroy = true;
+        MarioBros.manager.get("audio/sounds/stomp.wav", Sound.class).play();
 
     }
 }
