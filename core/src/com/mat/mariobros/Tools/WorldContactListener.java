@@ -1,6 +1,5 @@
 package com.mat.mariobros.Tools;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.ContactListener;
@@ -10,6 +9,7 @@ import com.mat.mariobros.MarioBros;
 import com.mat.mariobros.Sprites.Enemies.Enemy;
 import com.mat.mariobros.Sprites.Items.Item;
 import com.mat.mariobros.Sprites.Mario;
+import com.mat.mariobros.Sprites.Other.FireBall;
 import com.mat.mariobros.Sprites.TitleObjects.InteractiveTileObject;
 
 public class WorldContactListener implements ContactListener {
@@ -52,8 +52,8 @@ public class WorldContactListener implements ContactListener {
                     ((Mario) fixB.getUserData()).hit((Enemy)fixA.getUserData());
                 break;
             case MarioBros.ENEMY_BIT | MarioBros.ENEMY_BIT:
-                ((Enemy)fixA.getUserData()).onEnemyHit((Enemy)fixB.getUserData());
-                ((Enemy)fixB.getUserData()).onEnemyHit((Enemy)fixA.getUserData());
+                ((Enemy)fixA.getUserData()).hitByEnemy((Enemy)fixB.getUserData());
+                ((Enemy)fixB.getUserData()).hitByEnemy((Enemy)fixA.getUserData());
                 break;
             case MarioBros.ITEM_BIT | MarioBros.OBJECT_BIT:
                 if (fixA.getFilterData().categoryBits == MarioBros.ITEM_BIT)
@@ -66,6 +66,12 @@ public class WorldContactListener implements ContactListener {
                     ((Item)fixA.getUserData()).use((Mario) fixB.getUserData());
                 else
                     ((Item)fixB.getUserData()).use((Mario) fixA.getUserData());
+                break;
+            case MarioBros.FIREBALL_BIT | MarioBros.OBJECT_BIT:
+                if(fixA.getFilterData().categoryBits == MarioBros.FIREBALL_BIT)
+                    ((FireBall)fixA.getUserData()).setToDestroy();
+                else
+                    ((FireBall)fixB.getUserData()).setToDestroy();
                 break;
 
         }

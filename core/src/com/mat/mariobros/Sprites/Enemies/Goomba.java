@@ -35,6 +35,7 @@ public class Goomba extends Enemy {
         setBounds(getX(), getY(), 16/ MarioBros.PPM,16 / MarioBros.PPM);
         setToDestroy = false;
         destroyed = false;
+//        angle = 0;
 
     }
 
@@ -97,7 +98,7 @@ public class Goomba extends Enemy {
 
     }
 
-    public void onEnemyHit(Enemy enemy){
+    public void hitByEnemy(Enemy enemy){
 
         if (enemy instanceof Turtle && ((Turtle) enemy).currentState == Turtle.State.MOVING_SHELL)
             setToDestroy = true;

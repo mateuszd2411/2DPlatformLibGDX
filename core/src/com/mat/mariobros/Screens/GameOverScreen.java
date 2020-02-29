@@ -22,8 +22,8 @@ public class GameOverScreen implements Screen {
 
     public GameOverScreen(Game game) {
         this.game = game;
-        viewport = new FitViewport(MarioBros.V_HIGHT, MarioBros.V_WIDTH, new OrthographicCamera());
-        stage = new Stage(viewport, ((MarioBros) game). batch);
+        viewport = new FitViewport(MarioBros.V_WIDTH, MarioBros.V_HEIGHT, new OrthographicCamera());
+        stage = new Stage(viewport, ((MarioBros) game).batch);
 
         Label.LabelStyle font = new Label.LabelStyle(new BitmapFont(), Color.BLUE);
 
