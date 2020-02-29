@@ -1,15 +1,13 @@
-package com.mat.mariobros.Sprites;
+package com.mat.mariobros.Sprites.TitleObjects;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.physics.box2d.World;
 import com.mat.mariobros.MarioBros;
 import com.mat.mariobros.Scenes.Hud;
 import com.mat.mariobros.Screens.PlayScreen;
 
-public class Brick extends  InteractiveTileObject {
+public class Brick extends InteractiveTileObject {
     public Brick(PlayScreen screen, Rectangle bounds) {
         super(screen, bounds);
         fixture.setUserData(this);

@@ -8,7 +8,7 @@ import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.Manifold;
 import com.mat.mariobros.MarioBros;
 import com.mat.mariobros.Sprites.Enemies.Enemy;
-import com.mat.mariobros.Sprites.InteractiveTileObject;
+import com.mat.mariobros.Sprites.TitleObjects.InteractiveTileObject;
 
 public class WorldContactListener implements ContactListener {
     @Override
