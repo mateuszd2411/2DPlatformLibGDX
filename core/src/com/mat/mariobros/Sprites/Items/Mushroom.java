@@ -6,12 +6,13 @@ import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.mat.mariobros.MarioBros;
 import com.mat.mariobros.Screens.PlayScreen;
+import com.mat.mariobros.Sprites.Mario;
 
 public class Mushroom extends Item {
     public Mushroom(PlayScreen screen, float x, float y) {
         super(screen, x, y);
         setRegion(screen.getAtlas().findRegion("mushroom"),0,0,16,16);
-        velocity = new Vector2(0,0);
+        velocity = new Vector2(0.7f,0);
     }
 
     @Override
@@ -24,6 +25,15 @@ public class Mushroom extends Item {
         FixtureDef fdef = new FixtureDef();
         CircleShape shape = new CircleShape();
         shape.setRadius(6/ MarioBros.PPM);
+        fdef.filter.categoryBits = MarioBros.MARIO_BIT;
+        fdef.filter.maskBits = MarioBros.GROUND_BIT |
+                MarioBros.COIN_BIT |
+                MarioBros.BRICK_BIT |
+                MarioBros.ENEMY_BIT |
+                MarioBros.OBJECT_BIT |
+                MarioBros.ENEMY_HEAD_BIT |
+                MarioBros.ITEM_BIT;
+
 
 
         fdef.shape = shape;
@@ -31,7 +41,7 @@ public class Mushroom extends Item {
     }
 
     @Override
-    public void use() {
+    public void use(Mario mario) {
         destroy();
     }
 
@@ -39,6 +49,7 @@ public class Mushroom extends Item {
     public void update(float dt) {
         super.update(dt);
         setPosition(body.getPosition().x - getWidth() / 2, body.getPosition().y - getHeight() / 2);
+        velocity.y = body.getLinearVelocity().y;
         body.setLinearVelocity(velocity);
     }
 }
