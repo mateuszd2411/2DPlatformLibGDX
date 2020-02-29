@@ -14,6 +14,7 @@ import com.badlogic.gdx.utils.Array;
 import com.mat.mariobros.MarioBros;
 import com.mat.mariobros.Screens.PlayScreen;
 import com.mat.mariobros.Sprites.Enemies.Enemy;
+import com.mat.mariobros.Sprites.Mario;
 
 public class Goomba extends Enemy {
 
@@ -97,7 +98,7 @@ public class Goomba extends Enemy {
     }
 
     @Override
-    public void hitOnHead() {
+    public void hitOnHead(Mario mario) {
 
         setToDestroy = true;
         MarioBros.manager.get("audio/sounds/stomp.wav", Sound.class).play();
