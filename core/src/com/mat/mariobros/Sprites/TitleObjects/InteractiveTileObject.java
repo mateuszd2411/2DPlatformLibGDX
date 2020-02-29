@@ -15,6 +15,7 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.mat.mariobros.MarioBros;
 import com.mat.mariobros.Screens.PlayScreen;
+import com.mat.mariobros.Sprites.Mario;
 
 public abstract class InteractiveTileObject {
     protected World world;
@@ -48,7 +49,7 @@ public abstract class InteractiveTileObject {
         fixture = body.createFixture(fdef);
     }
 
-    public abstract void onHeadHit();
+    public abstract void onHeadHit(Mario mario);
     public void setCategoryFilter(short filterBit){
         Filter filter = new Filter();
         filter.categoryBits = filterBit;

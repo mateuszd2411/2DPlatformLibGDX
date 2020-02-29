@@ -11,6 +11,7 @@ import com.mat.mariobros.Scenes.Hud;
 import com.mat.mariobros.Screens.PlayScreen;
 import com.mat.mariobros.Sprites.Items.ItemDef;
 import com.mat.mariobros.Sprites.Items.Mushroom;
+import com.mat.mariobros.Sprites.Mario;
 
 public class Coin extends InteractiveTileObject {
     private static TiledMapTileSet tileSet;
@@ -25,7 +26,7 @@ public class Coin extends InteractiveTileObject {
     }
 
     @Override
-    public void onHeadHit() {
+    public void onHeadHit(Mario mario) {
         Gdx.app.log("Coin", "Collision");
         if (getCell().getTile().getId() == BLANK_COIN)
             MarioBros.manager.get("audio/sounds/bump.wav", Sound.class).play();
