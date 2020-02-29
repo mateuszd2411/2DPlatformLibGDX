@@ -1,6 +1,5 @@
-package com.mat.mariobros.Sprites;
+package com.mat.mariobros.Sprites.Enemies;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -13,6 +12,7 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.utils.Array;
 import com.mat.mariobros.MarioBros;
 import com.mat.mariobros.Screens.PlayScreen;
+import com.mat.mariobros.Sprites.Enemies.Enemy;
 
 public class Goomba extends Enemy {
 
