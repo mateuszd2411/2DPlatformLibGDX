@@ -7,32 +7,29 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mat.mariobros.Screens.PlayScreen;
 
-public class MarioBros extends Game {
-
-	public static final int V_WIDTH = 400;
-	public static final int V_HEIGHT = 208;
-	public static final float PPM = 100;
-
-	public static final short NOTHING_BIT = 0;
-	public static final short GROUND_BIT = 1;
-	public static final short MARIO_BIT = 2;
+public class MarioBros
+		extends Game {
 	public static final short BRICK_BIT = 4;
 	public static final short COIN_BIT = 8;
 	public static final short DESTROYED_BIT = 16;
-	public static final short OBJECT_BIT = 32;
 	public static final short ENEMY_BIT = 64;
 	public static final short ENEMY_HEAD_BIT = 128;
-	public static final short ITEM_BIT = 256;
-	public static final short MARIO_HEAD_BIT = 512;
 	public static final short FIREBALL_BIT = 1024;
-
-	public SpriteBatch batch;
-
+	public static final short GROUND_BIT = 1;
+	public static final short ITEM_BIT = 256;
+	public static final short MARIO_BIT = 2;
+	public static final short MARIO_HEAD_BIT = 512;
+	public static final short NOTHING_BIT = 0;
+	public static final short OBJECT_BIT = 32;
+	public static final float PPM = 100.0f;
+	public static final int V_HEIGHT = 208;
+	public static final int V_WIDTH = 400;
+	public static SpriteBatch batch;
+	public static Controller controller;
 	public static AssetManager manager;
 
-
 	@Override
-	public void create () {
+	public void create() {
 		batch = new SpriteBatch();
 		manager = new AssetManager();
 		manager.load("audio/music/mario_music.ogg", Music.class);
@@ -45,10 +42,8 @@ public class MarioBros extends Game {
 		manager.load("audio/sounds/stomp.wav", Sound.class);
 		manager.load("audio/sounds/mariodie.wav", Sound.class);
 		manager.finishLoading();
-
-
-		setScreen(new PlayScreen(this));
-
+		this.setScreen(new PlayScreen(this));
+		controller = new Controller();
 	}
 
 	@Override
@@ -59,9 +54,14 @@ public class MarioBros extends Game {
 	}
 
 	@Override
-	public void render () {
+	public void render() {
 		super.render();
-
+		controller.draw();
 	}
 
+	@Override
+	public void resize(int n, int n2) {
+		super.resize(n, n2);
+		controller.resize(n, n2);
+	}
 }
