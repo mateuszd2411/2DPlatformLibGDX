@@ -98,10 +98,10 @@ public class Controller {
         Gdx.input.setInputProcessor(stage);
 
         Table table = new Table();
-        table.left().bottom();
+//        table.left().bottom();
 
         Image upImg = new Image(new Texture("flatDark25.png"));
-        upImg.setSize(50, 50);
+        upImg.setSize(50, 100);
         upImg.addListener(new InputListener() {
 
             @Override
@@ -116,24 +116,24 @@ public class Controller {
             }
         });
 
-        Image downImg = new Image(new Texture("flatDark26.png"));
-        downImg.setSize(50, 50);
-        downImg.addListener(new InputListener() {
-
-            @Override
-            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                downPressed = true;
-                return true;
-            }
-
-            @Override
-            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                downPressed = false;
-            }
-        });
+//        Image downImg = new Image(new Texture("flatDark26.png"));
+//        downImg.setSize(50, 50);
+//        downImg.addListener(new InputListener() {
+//
+//            @Override
+//            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+//                downPressed = true;
+//                return true;
+//            }
+//
+//            @Override
+//            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+//                downPressed = false;
+//            }
+//        });
 
         Image rightImg = new Image(new Texture("flatDark24.png"));
-        rightImg.setSize(50, 50);
+        rightImg.setSize(100, 50);
         rightImg.addListener(new InputListener() {
 
             @Override
@@ -149,7 +149,7 @@ public class Controller {
         });
 
         Image leftImg = new Image(new Texture("flatDark23.png"));
-        leftImg.setSize(50, 50);
+        leftImg.setSize(100, 50);
         leftImg.addListener(new InputListener() {
 
             @Override
@@ -164,16 +164,28 @@ public class Controller {
             }
         });
 
+
+
+
+
+
         table.add();
-        table.add(upImg).size(upImg.getWidth(), upImg.getHeight());
-        table.add();
-        table.row().pad(5, 5, 5, 5);
-        table.add(leftImg).size(leftImg.getWidth(), leftImg.getHeight());
-        table.add();
+        table.pad(15, 1, 50, 15);
+        table.add(leftImg).padRight(50).size(leftImg.getWidth(), leftImg.getHeight());
+        table.pad(15, 1, 50, 15);
         table.add(rightImg).size(rightImg.getWidth(), rightImg.getHeight());
-        table.row().padBottom(5);
+
+
+        table.add().pad(15, 15, 50, 400);
+        table.left().add(upImg).size(upImg.getWidth(), upImg.getHeight());
         table.add();
-        table.add(downImg).size(downImg.getWidth(), downImg.getHeight());
+        table.row().pad(15, 15, 15, 15);
+
+        table.add();
+
+        table.row().padBottom(15);
+        table.add();
+//        table.add(downImg).size(downImg.getWidth(), downImg.getHeight());
         table.add();
 
         stage.addActor(table);
