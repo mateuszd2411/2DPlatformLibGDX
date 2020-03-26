@@ -24,29 +24,21 @@ package com.mat.mariobros;/*
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Cell;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.mat.mariobros.MarioBros;
 
 
 public class Controller {
     Viewport viewport;
     Stage stage;
-    boolean upPressed, downPressed, leftPressed, rightPressed;
+    boolean upPressed, firePress, leftPressed, rightPressed;
     OrthographicCamera cam;
 
     public Controller(){
@@ -63,7 +55,7 @@ public class Controller {
                         upPressed = true;
                         break;
                     case Input.Keys.DOWN:
-                        downPressed = true;
+                        firePress = true;
                         break;
                     case Input.Keys.LEFT:
                         leftPressed = true;
@@ -71,6 +63,7 @@ public class Controller {
                     case Input.Keys.RIGHT:
                         rightPressed = true;
                         break;
+
                 }
                 return true;
             }
@@ -82,7 +75,7 @@ public class Controller {
                         upPressed = false;
                         break;
                     case Input.Keys.DOWN:
-                        downPressed = false;
+                        firePress = false;
                         break;
                     case Input.Keys.LEFT:
                         leftPressed = false;
@@ -101,7 +94,7 @@ public class Controller {
 //        table.left().bottom();
 
         Image upImg = new Image(new Texture("flatDark25.png"));
-        upImg.setSize(50, 100);
+        upImg.setSize(90, 110);
         upImg.addListener(new InputListener() {
 
             @Override
@@ -116,24 +109,24 @@ public class Controller {
             }
         });
 
-//        Image downImg = new Image(new Texture("flatDark26.png"));
-//        downImg.setSize(50, 50);
-//        downImg.addListener(new InputListener() {
-//
-//            @Override
-//            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-//                downPressed = true;
-//                return true;
-//            }
-//
-//            @Override
-//            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-//                downPressed = false;
-//            }
-//        });
+        Image downImg = new Image(new Texture("flatDark26.png"));
+        downImg.setSize(90, 90);
+        downImg.addListener(new InputListener() {
+
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                firePress = true;
+                return true;
+            }
+
+            @Override
+            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                firePress = false;
+            }
+        });
 
         Image rightImg = new Image(new Texture("flatDark24.png"));
-        rightImg.setSize(100, 50);
+        rightImg.setSize(110, 60);
         rightImg.addListener(new InputListener() {
 
             @Override
@@ -149,7 +142,7 @@ public class Controller {
         });
 
         Image leftImg = new Image(new Texture("flatDark23.png"));
-        leftImg.setSize(100, 50);
+        leftImg.setSize(110, 60);
         leftImg.addListener(new InputListener() {
 
             @Override
@@ -171,13 +164,15 @@ public class Controller {
 
         table.add();
         table.pad(15, 1, 50, 15);
-        table.add(leftImg).padRight(50).size(leftImg.getWidth(), leftImg.getHeight());
+        table.add(downImg).padBottom(250).size(downImg.getWidth(), downImg.getHeight());
+        table.pad(15, 1, 50, 15);
+        table.add(leftImg).padRight(50).padLeft(-50).size(leftImg.getWidth(), leftImg.getHeight());
         table.pad(15, 1, 50, 15);
         table.add(rightImg).size(rightImg.getWidth(), rightImg.getHeight());
 
 
-        table.add().pad(15, 15, 50, 400);
-        table.left().add(upImg).size(upImg.getWidth(), upImg.getHeight());
+        table.add().pad(15, 15, 50, 340);
+        table.left().padBottom(80).add(upImg).size(upImg.getWidth(), upImg.getHeight());
         table.add();
         table.row().pad(15, 15, 15, 15);
 
@@ -199,8 +194,8 @@ public class Controller {
         return upPressed;
     }
 
-    public boolean isDownPressed() {
-        return downPressed;
+    public boolean isFirePress() {
+        return firePress;
     }
 
     public boolean isLeftPressed() {

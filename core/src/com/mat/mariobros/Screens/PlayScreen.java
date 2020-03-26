@@ -66,7 +66,7 @@ public class PlayScreen
         this.creator = new B2WorldCreator(this);
         this.player = new Mario(this);
         this.world.setContactListener(new WorldContactListener());
-        this.music = MarioBros.manager.get("audio/music/mario_music.ogg", Music.class);
+        this.music = MarioBros.manager.get("audio/music/music.mp3", Music.class);
         this.music.setLooping(true);
         this.music.setVolume(0.1f);
         this.music.play();
@@ -112,9 +112,13 @@ public class PlayScreen
                 this.player.jump();
             }
             if (MarioBros.controller.isRightPressed() && this.player.b2body.getLinearVelocity().x <= 2.0f) {
-                this.player.b2body.applyLinearImpulse(new Vector2(0.1f, 0.0f), this.player.b2body.getWorldCenter(), true);
-            } else if (MarioBros.controller.isLeftPressed() && this.player.b2body.getLinearVelocity().x >= -2.0f) {
-                this.player.b2body.applyLinearImpulse(new Vector2(-0.1f, 0.0f), this.player.b2body.getWorldCenter(), true);
+                this.player.b2body.applyLinearImpulse(new Vector2(0.12f, 0.0f), this.player.b2body.getWorldCenter(), true);
+            }
+            else if (MarioBros.controller.isLeftPressed() && this.player.b2body.getLinearVelocity().x >= -2.0f) {
+                this.player.b2body.applyLinearImpulse(new Vector2(-0.12f, 0.0f), this.player.b2body.getWorldCenter(), true);
+            }
+            else if (MarioBros.controller.isFirePress()) {
+                this.player.fire();
             }
             if (Gdx.input.isKeyJustPressed(62)) {
                 this.player.fire();

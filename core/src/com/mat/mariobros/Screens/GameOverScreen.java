@@ -25,14 +25,14 @@ public class GameOverScreen implements Screen {
         viewport = new FitViewport(MarioBros.V_WIDTH, MarioBros.V_HEIGHT, new OrthographicCamera());
         stage = new Stage(viewport, ((MarioBros) game).batch);
 
-        Label.LabelStyle font = new Label.LabelStyle(new BitmapFont(), Color.BLUE);
+        Label.LabelStyle font = new Label.LabelStyle(new BitmapFont(), Color.FIREBRICK);
 
         Table table = new Table();
         table.center();
         table.setFillParent(true);
 
         Label gameOverLabel = new Label("Game Over", font);
-        Label playAgainLabel = new Label("Click to play Again", font);
+        Label playAgainLabel = new Label("Koza zdechła :(", font);
 
         table.add(gameOverLabel).expandX();
         table.row();

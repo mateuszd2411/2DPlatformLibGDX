@@ -30,7 +30,7 @@ public class Goomba extends Enemy {
         frames = new Array<TextureRegion>();
         for (int i = 0; i < 2; i++)
             frames.add(new TextureRegion(screen.getAtlas().findRegion("goomba"), i * 16,0,16,16));
-        walkAnimation = new Animation(0.4f, frames);
+        walkAnimation = new Animation(0.7f, frames);
         stateTime = 0;
         setBounds(getX(), getY(), 16/ MarioBros.PPM,16 / MarioBros.PPM);
         setToDestroy = false;

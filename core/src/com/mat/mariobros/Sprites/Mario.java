@@ -220,7 +220,7 @@ public class Mario extends Sprite {
 
         if (!isDead()) {
 
-            MarioBros.manager.get("audio/music/mario_music.ogg", Music.class).stop();
+            MarioBros.manager.get("audio/music/music.mp3", Music.class).stop();
             MarioBros.manager.get("audio/sounds/mariodie.wav", Sound.class).play();
             marioIsDead = true;
             Filter filter = new Filter();
@@ -248,7 +248,7 @@ public class Mario extends Sprite {
 
     public void jump(){
         if ( currentState != State.JUMPING ) {
-            b2body.applyLinearImpulse(new Vector2(0, 4f), b2body.getWorldCenter(), true);
+            b2body.applyLinearImpulse(new Vector2(0.2f, 5f), b2body.getWorldCenter(), true);
             currentState = State.JUMPING;
         }
     }

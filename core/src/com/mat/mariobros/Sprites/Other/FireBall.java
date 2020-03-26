@@ -37,9 +37,9 @@ public class FireBall extends Sprite {
         for(int i = 0; i < 4; i++){
             frames.add(new TextureRegion(screen.getAtlas().findRegion("fireball"), i * 8, 0, 8, 8));
         }
-        fireAnimation = new Animation(0.2f, frames);
+        fireAnimation = new Animation(0.5f, frames);
         setRegion((TextureRegion) fireAnimation.getKeyFrame(0));
-        setBounds(x, y, 6 / MarioBros.PPM, 6 / MarioBros.PPM);
+        setBounds(x, y, 7 / MarioBros.PPM, 6 / MarioBros.PPM);
         defineFireBall();
     }
 
@@ -76,7 +76,7 @@ public class FireBall extends Sprite {
             destroyed = true;
         }
         if(b2body.getLinearVelocity().y > 2f)
-            b2body.setLinearVelocity(b2body.getLinearVelocity().x, 2f);
+            b2body.setLinearVelocity(b2body.getLinearVelocity().x, 2.15f);
         if((fireRight && b2body.getLinearVelocity().x < 0) || (!fireRight && b2body.getLinearVelocity().x > 0))
             setToDestroy();
     }
