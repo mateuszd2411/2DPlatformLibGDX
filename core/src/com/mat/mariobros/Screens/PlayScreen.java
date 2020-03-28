@@ -123,6 +123,14 @@ public class PlayScreen
             if (Gdx.input.isKeyJustPressed(62)) {
                 this.player.fire();
             }
+            //bomb
+            else if (MarioBros.controller.isBombPress()) {
+                this.player.putBomb();
+            }
+            if (Gdx.input.isKeyJustPressed(30)) {
+                this.player.putBomb();
+            }
+            //bomb
         }
     }
 

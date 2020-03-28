@@ -20,6 +20,7 @@ import com.mat.mariobros.MarioBros;
 import com.mat.mariobros.Screens.PlayScreen;
 import com.mat.mariobros.Sprites.Enemies.Enemy;
 import com.mat.mariobros.Sprites.Enemies.Turtle;
+import com.mat.mariobros.Sprites.Other.Bomb;
 import com.mat.mariobros.Sprites.Other.FireBall;
 
 public class Mario extends Sprite {
@@ -49,6 +50,7 @@ public class Mario extends Sprite {
     private PlayScreen screen;
 
     private Array<FireBall> fireballs;
+    private Array<Bomb> bombs;
 
     public Mario(PlayScreen screen){
         //initialize default values
@@ -101,6 +103,8 @@ public class Mario extends Sprite {
         setRegion(marioStand);
 
         fireballs = new Array<FireBall>();
+        //bomb
+        bombs = new Array<Bomb>();
 
     }
 
@@ -131,6 +135,16 @@ public class Mario extends Sprite {
             if(ball.isDestroyed())
                 fireballs.removeValue(ball, true);
         }
+
+        ///bomb
+
+        for(Bomb bomb : bombs) {
+            bomb.update(dt);
+            if(bomb.isDestroyed())
+                bombs.removeValue(bomb, true);
+        }
+
+        ///bomb
 
     }
 
@@ -374,9 +388,22 @@ public class Mario extends Sprite {
         fireballs.add(new FireBall(screen, b2body.getPosition().x, b2body.getPosition().y, runningRight ? true : false));
     }
 
+    //bomb
+
+    public void putBomb(){
+        bombs.add(new Bomb(screen, b2body.getPosition().x, b2body.getPosition().y, runningRight ? true : false));
+    }
+
+    //bomb
+
     public void draw(Batch batch){
         super.draw(batch);
         for(FireBall ball : fireballs)
             ball.draw(batch);
+
+        ///bomb
+        for(Bomb bomb : bombs)
+            bomb.draw(batch);
+        ///bomb
     }
 }

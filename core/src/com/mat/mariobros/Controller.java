@@ -2,23 +2,7 @@ package com.mat.mariobros;/*
  * Decompiled with CFR 0.0.
  *
  * Could not load the following classes:
- *  com.badlogic.gdx.graphics.OrthographicCamera
- *  com.badlogic.gdx.graphics.Texture
- *  com.badlogic.gdx.graphics.g2d.Batch
- *  com.badlogic.gdx.graphics.g2d.SpriteBatch
- *  com.badlogic.gdx.scenes.scene2d.Stage
- *  com.badlogic.gdx.scenes.scene2d.ui.Cell
- *  com.badlogic.gdx.scenes.scene2d.ui.Image
- *  com.badlogic.gdx.scenes.scene2d.ui.Table
- *  com.badlogic.gdx.utils.viewport.FitViewport
- *  com.brentaureli.mariobros.Controller$1
- *  com.brentaureli.mariobros.Controller$2
- *  com.brentaureli.mariobros.Controller$3
- *  com.brentaureli.mariobros.Controller$4
- *  com.brentaureli.mariobros.Controller$5
- *  com.brentaureli.mariobros.MarioBros
- *  java.lang.Object
- *  java.lang.String
+ *
  */
 
 
@@ -38,7 +22,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 public class Controller {
     Viewport viewport;
     Stage stage;
-    boolean upPressed, firePress, leftPressed, rightPressed;
+    boolean bombPress,upPressed, firePress, leftPressed, rightPressed;
     OrthographicCamera cam;
 
     public Controller(){
@@ -56,6 +40,9 @@ public class Controller {
                         break;
                     case Input.Keys.DOWN:
                         firePress = true;
+                        break;
+                    case Input.Keys.B:
+                        bombPress = true;
                         break;
                     case Input.Keys.LEFT:
                         leftPressed = true;
@@ -76,6 +63,9 @@ public class Controller {
                         break;
                     case Input.Keys.DOWN:
                         firePress = false;
+                        break;
+                    case Input.Keys.B:
+                        bombPress = false;
                         break;
                     case Input.Keys.LEFT:
                         leftPressed = false;
@@ -109,6 +99,8 @@ public class Controller {
             }
         });
 
+        ///fire IMG
+
         Image downImg = new Image(new Texture("flatDark26.png"));
         downImg.setSize(90, 90);
         downImg.addListener(new InputListener() {
@@ -124,6 +116,28 @@ public class Controller {
                 firePress = false;
             }
         });
+
+        //fire IMG
+
+        ///bomb IMG
+
+        Image bombImg = new Image(new Texture("bomb.png"));
+        bombImg.setSize(90, 90);
+        bombImg.addListener(new InputListener() {
+
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                bombPress = true;
+                return true;
+            }
+
+            @Override
+            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                bombPress = false;
+            }
+        });
+
+        //bomb IMG
 
         Image rightImg = new Image(new Texture("flatDark24.png"));
         rightImg.setSize(110, 60);
@@ -159,12 +173,16 @@ public class Controller {
 
 
 
-
-
+        ///bobm IMG
+        table.add();
+//        table.pad(15, 1, 50, 15);
+        table.add(bombImg).padBottom(500).size(bombImg.getWidth(), bombImg.getHeight());
+//        table.pad(15, 1, 50, 15);
+        ///bobm IMG
 
         table.add();
         table.pad(15, 1, 50, 15);
-        table.add(downImg).padBottom(250).size(downImg.getWidth(), downImg.getHeight());
+        table.add(downImg).padLeft(-90).padBottom(250).size(downImg.getWidth(), downImg.getHeight());
         table.pad(15, 1, 50, 15);
         table.add(leftImg).padRight(50).padLeft(-50).size(leftImg.getWidth(), leftImg.getHeight());
         table.pad(15, 1, 50, 15);
@@ -197,6 +215,14 @@ public class Controller {
     public boolean isFirePress() {
         return firePress;
     }
+
+    //bomb
+
+    public boolean isBombPress() {
+        return bombPress;
+    }
+
+    //bomb
 
     public boolean isLeftPressed() {
         return leftPressed;

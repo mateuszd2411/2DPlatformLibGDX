@@ -12,9 +12,11 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.utils.Array;
 import com.mat.mariobros.MarioBros;
+import com.mat.mariobros.Scenes.Hud;
 import com.mat.mariobros.Screens.PlayScreen;
-import com.mat.mariobros.Sprites.Enemies.Enemy;
 import com.mat.mariobros.Sprites.Mario;
+import com.mat.mariobros.Sprites.Other.Bomb;
+import com.mat.mariobros.Sprites.Other.FireBall;
 
 public class Goomba extends Enemy {
 
@@ -22,7 +24,7 @@ public class Goomba extends Enemy {
     private Animation walkAnimation;
     private Array<TextureRegion> frames;
     private boolean setToDestroy;
-    private boolean destroyed;
+    private  boolean destroyedG;          ///////private
 
 
     public Goomba(PlayScreen screen, float x, float y) {
@@ -34,20 +36,20 @@ public class Goomba extends Enemy {
         stateTime = 0;
         setBounds(getX(), getY(), 16/ MarioBros.PPM,16 / MarioBros.PPM);
         setToDestroy = false;
-        destroyed = false;
+        destroyedG = false;
 //        angle = 0;
 
     }
 
     public void update(float dt){
         stateTime += dt;
-        if (setToDestroy && !destroyed){
+        if (setToDestroy && !destroyedG){
             world.destroyBody(b2body);
-            destroyed = true;
+            destroyedG = true;
             setRegion(new TextureRegion(screen.getAtlas().findRegion("goomba"), 32,0,16,16));
             stateTime = 0;
         }
-        else if (!destroyed) {
+        else if (!destroyedG) {
             b2body.setLinearVelocity(velocity);
             setPosition(b2body.getPosition().x - getWidth() / 2, b2body.getPosition().y - getHeight() / 2);
             setRegion((TextureRegion) walkAnimation.getKeyFrame(stateTime, true));
@@ -64,13 +66,15 @@ public class Goomba extends Enemy {
 
         FixtureDef fdef = new FixtureDef();
         CircleShape shape = new CircleShape();
-        shape.setRadius(6/ MarioBros.PPM);
+        shape.setRadius(5/ MarioBros.PPM);              //////////radio goomba
         fdef.filter.categoryBits = MarioBros.ENEMY_BIT;
         fdef.filter.maskBits = MarioBros.GROUND_BIT |
                 MarioBros.COIN_BIT |
                 MarioBros.BRICK_BIT |
                 MarioBros.ENEMY_BIT |
                 MarioBros.OBJECT_BIT|
+                MarioBros.FIREBALL_BIT|
+                MarioBros.BOMB_BIT|
                 MarioBros.MARIO_BIT;
 
         fdef.shape = shape;
@@ -78,6 +82,7 @@ public class Goomba extends Enemy {
 
         PolygonShape head = new PolygonShape();
         Vector2[] vertice = new Vector2[4];
+
         vertice[0] = new Vector2(-5,8).scl(1 / MarioBros.PPM);
         vertice[1] = new Vector2(5,8).scl(1 / MarioBros.PPM);
         vertice[2] = new Vector2(-3,3).scl(1 / MarioBros.PPM);
@@ -93,7 +98,7 @@ public class Goomba extends Enemy {
     }
 
     public void draw(Batch batch){
-        if (!destroyed || stateTime <1)
+        if (!destroyedG || stateTime <1)
             super.draw(batch);
 
     }
@@ -105,6 +110,20 @@ public class Goomba extends Enemy {
         else
             reverseVelocity(true, false);
 
+    }
+
+    @Override
+    public void flamed(FireBall fireball) {
+        setToDestroy = true;
+        Hud.addScore(100);
+        fireball.setToDestroy();
+    }
+
+    @Override
+    public void flamed(Bomb bomb) {
+        setToDestroy = true;
+        Hud.addScore(100);
+        bomb.setToDestroy();
     }
 
     @Override

@@ -12,8 +12,11 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.utils.Array;
 import com.mat.mariobros.MarioBros;
+import com.mat.mariobros.Scenes.Hud;
 import com.mat.mariobros.Screens.PlayScreen;
 import com.mat.mariobros.Sprites.Mario;
+import com.mat.mariobros.Sprites.Other.Bomb;
+import com.mat.mariobros.Sprites.Other.FireBall;
 
 public class Turtle extends Enemy {
     public static final int KICK_LEFT = -2;
@@ -137,6 +140,20 @@ public class Turtle extends Enemy {
     @Override
     public void hitByEnemy(Enemy enemy) {
         reverseVelocity(true, false);
+    }
+
+    @Override
+    public void flamed(FireBall fireball) {
+        setToDestroy = true;
+        Hud.addScore(100);
+        fireball.setToDestroy();
+    }
+
+    @Override
+    public void flamed(Bomb bomb) {
+        setToDestroy = true;
+        Hud.addScore(100);
+        bomb.setToDestroy();
     }
 
     public void kick(int direction){
