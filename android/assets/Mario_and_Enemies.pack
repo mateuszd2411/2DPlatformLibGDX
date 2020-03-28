@@ -45,3 +45,10 @@ mushroom
   orig: 16, 16
   offset: 0, 0
   index: -1
+dog
+  rotate: false
+  xy: 277, 9
+  size: 66, 18
+  orig: 66, 18
+  offset: 0, 0
+  index: -1
