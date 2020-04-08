@@ -52,3 +52,10 @@ dog
   orig: 66, 18
   offset: 0, 0
   index: -1
+fire
+rotate: false
+xy: 341, 9
+size: 63, 18
+orig: 63, 18
+offset: 0, 0
+index: -1
