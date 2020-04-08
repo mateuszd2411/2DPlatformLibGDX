@@ -31,7 +31,7 @@ public class Dog extends Enemy {
         frames = new Array<TextureRegion>();
         for (int i = 0; i < 2; i++)
             frames.add(new TextureRegion(screen.getAtlas().findRegion("dog"), i * 22,0,22,18));   /// i * 16,0,16,16));
-        walkAnimation = new Animation(0.7f, frames);
+        walkAnimation = new Animation(0.4f, frames);
         stateTime = 0;
         setBounds(getX(), getY(), 16/ MarioBros.PPM,16 / MarioBros.PPM);
         setToDestroy = false;
@@ -45,6 +45,7 @@ public class Dog extends Enemy {
         if (setToDestroy && !destroyedDog){    ////////// 32,0,16,16));
             world.destroyBody(b2body);
             destroyedDog = true;
+            MarioBros.manager.get("audio/sounds/dog.wav", Sound.class).play();
             setRegion(new TextureRegion(screen.getAtlas().findRegion("dog"), 44,0,22,18));
             stateTime = 0;
         }
@@ -65,16 +66,16 @@ public class Dog extends Enemy {
 
         FixtureDef fdef = new FixtureDef();
         CircleShape shape = new CircleShape();
-        shape.setRadius(5/ MarioBros.PPM);              //////////radio goomba
+        shape.setRadius(6/ MarioBros.PPM);              //////////radio
         fdef.filter.categoryBits = MarioBros.ENEMY_BIT;
         fdef.filter.maskBits = MarioBros.GROUND_BIT |
                 MarioBros.COIN_BIT |
                 MarioBros.BRICK_BIT |
                 MarioBros.ENEMY_BIT |
                 MarioBros.OBJECT_BIT|
+                MarioBros.MARIO_BIT|
                 MarioBros.FIREBALL_BIT|
-                MarioBros.BOMB_BIT|
-                MarioBros.MARIO_BIT;
+                MarioBros.BOMB_BIT;
 
         fdef.shape = shape;
         b2body.createFixture(fdef).setUserData(this);

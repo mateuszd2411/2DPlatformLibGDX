@@ -18,6 +18,8 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mat.mariobros.MarioBros;
 import com.mat.mariobros.Scenes.Hud;
@@ -58,10 +60,10 @@ public class PlayScreen
         this.gamePort = new FitViewport(4.0f, 2.08f, (Camera)this.gamecam);
         this.hud = new Hud(MarioBros.batch);
         this.maploader = new TmxMapLoader();
-        this.map = this.maploader.load("level1.tmx");
+        this.map = this.maploader.load("01.tmx");
         this.renderer = new OrthogonalTiledMapRenderer(this.map, 0.01f);
-        this.gamecam.position.set(this.gamePort.getWorldWidth() / 2.0f, this.gamePort.getWorldHeight() / 2.0f, 0.0f);
-        this.world = new World(new Vector2(0.0f, -10.0f), true);
+        this.gamecam.position.set(this.gamePort.getWorldWidth() / 2.0f, this.gamePort.getWorldHeight() / 2.0f, 0.0f);               /////////this.gamecam.position.set(this.gamePort.getWorldWidth() / 2.0f, this.gamePort.getWorldHeight() / 2.0f, 0.0f);
+        this.world = new World(new Vector2(0.0f, -10.0f), true);        ///grawitacja
         this.b2dr = new Box2DDebugRenderer();
         this.creator = new B2WorldCreator(this);
         this.player = new Mario(this);
@@ -154,7 +156,7 @@ public class PlayScreen
     @Override
     public void render(float f) {
         this.update(f);
-        Gdx.gl.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+        Gdx.gl.glClearColor(0.0f, 0.0f, 0.f, 1.0f);
         Gdx.gl.glClear(16384);
         this.renderer.render();
         this.b2dr.render(this.world, this.gamecam.combined);

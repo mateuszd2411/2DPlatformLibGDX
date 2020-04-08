@@ -60,6 +60,7 @@ public class Turtle extends Enemy {
                 MarioBros.COIN_BIT |
                 MarioBros.BRICK_BIT |
                 MarioBros.ENEMY_BIT |
+                MarioBros.FIREBALL_BIT|
                 MarioBros.OBJECT_BIT |
                 MarioBros.MARIO_BIT;
 

@@ -16,6 +16,7 @@ public class MarioBros
 	public static final short ENEMY_HEAD_BIT = 128;
 	public static final short FIREBALL_BIT = 1024;
 	public static final short BOMB_BIT = 2048;
+	public static final short END_LEVEL = 8192;
 	public static final short GROUND_BIT = 1;
 	public static final short ITEM_BIT = 256;
 	public static final short MARIO_BIT = 2;
@@ -43,6 +44,8 @@ public class MarioBros
 		manager.load("audio/sounds/stomp.wav", Sound.class);
 		manager.load("audio/sounds/mariodie.wav", Sound.class);
 		manager.load("audio/sounds/bomb.wav", Sound.class);
+		manager.load("audio/sounds/nope.wav", Sound.class);
+		manager.load("audio/sounds/dog.wav", Sound.class);
 		manager.finishLoading();
 		this.setScreen(new PlayScreen(this));
 		controller = new Controller();

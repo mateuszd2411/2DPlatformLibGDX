@@ -19,7 +19,7 @@ public class Brick extends InteractiveTileObject {
 
     @Override
     public void onHeadHit(Mario mario) {
-        if (mario.isBig()){
+        if (!mario.isDead()){
             setCategoryFilter(MarioBros.DESTROYED_BIT);
             getCell().setTile(null);
             Hud.addScore(200);

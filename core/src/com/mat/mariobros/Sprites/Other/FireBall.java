@@ -70,7 +70,10 @@ public  class FireBall extends Sprite {
         fdef.restitution = 0 ;    ////belching
         fdef.friction = 0;      ////friction  (bomb  === high)
         b2body.createFixture(fdef).setUserData(this);
-        b2body.setLinearVelocity(new Vector2(fireRight ? 2.5f : -2.5f, .1f));  /// 2  -2   .1f
+        if (Mario.marioIsBig){
+            b2body.setLinearVelocity(new Vector2(fireRight ? 15.5f : -15.5f, 0.5f));  /// 2  -2   .1f     3.5f : -3.5f, .1f));
+        }else
+        b2body.setLinearVelocity(new Vector2(fireRight ? 2.5f : -2.5f, 0.2f));  /// 2  -2   .1f     3.5f : -3.5f, .1f));
 
 
 

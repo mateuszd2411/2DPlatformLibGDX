@@ -24,7 +24,7 @@ public class Mushroom extends Item {
 
         FixtureDef fdef = new FixtureDef();
         CircleShape shape = new CircleShape();
-        shape.setRadius(6 / MarioBros.PPM);
+        shape.setRadius(60 / MarioBros.PPM);
         fdef.filter.categoryBits = MarioBros.ITEM_BIT;
         fdef.filter.maskBits = MarioBros.MARIO_BIT |
                 MarioBros.OBJECT_BIT |
