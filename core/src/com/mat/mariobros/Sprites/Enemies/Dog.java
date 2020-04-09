@@ -50,9 +50,19 @@ public class Dog extends Enemy {
             stateTime = 0;
         }
         else if (!destroyedDog) {
+
+
+
             b2body.setLinearVelocity(velocity);
             setPosition(b2body.getPosition().x - getWidth() / 2, b2body.getPosition().y - getHeight() / 2);
             setRegion((TextureRegion) walkAnimation.getKeyFrame(stateTime, true));
+
+//            if(velocity.x > 0 && isFlipX() == false){
+////                region.flip(true, false);
+//            }
+//            if(velocity.x < 0 && isFlipX() == true){
+////                region.flip(true, false);
+//            }
         }
     }
 

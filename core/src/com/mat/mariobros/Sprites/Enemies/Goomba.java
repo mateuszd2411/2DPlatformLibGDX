@@ -118,6 +118,7 @@ public class Goomba extends Enemy {
         setToDestroy = true;
         Hud.addScore(100);
         fireball.setToDestroy();
+
     }
 
     @Override

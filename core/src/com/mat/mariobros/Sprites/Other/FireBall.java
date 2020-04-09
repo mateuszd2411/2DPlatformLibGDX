@@ -26,8 +26,8 @@ public  class FireBall extends Sprite {
 //    Array<TextureRegion> frames;
     Animation fireAnimation;
     float stateTime;
-    boolean destroyed;
-    boolean setToDestroy;
+    public  boolean destroyed;
+    public   boolean setToDestroy;
     boolean fireRight;
 
     Body b2body;
@@ -93,11 +93,11 @@ public  class FireBall extends Sprite {
             setToDestroy();
     }
 
-    public void setToDestroy(){
+    public  void setToDestroy(){
         setToDestroy = true;
     }
 
-    public boolean isDestroyed(){
+    public  boolean isDestroyed(){
         return destroyed;
     }
 
