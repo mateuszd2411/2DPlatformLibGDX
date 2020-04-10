@@ -56,8 +56,8 @@ public class Hud implements Disposable{
         countdownLabel = new Label(String.format("%03d", worldTimer), new Label.LabelStyle(new BitmapFont(), Color.FIREBRICK));
         scoreLabel =new Label(String.format("%06d", score), new Label.LabelStyle(new BitmapFont(), Color.FIREBRICK));
         timeLabel = new Label("CZAS", new Label.LabelStyle(new BitmapFont(), Color.FIREBRICK));
-        levelLabel = new Label(":D", new Label.LabelStyle(new BitmapFont(), Color.FIREBRICK));
-        worldLabel = new Label("KOZA Z WOZA", new Label.LabelStyle(new BitmapFont(), Color.FIREBRICK));
+        levelLabel = new Label("", new Label.LabelStyle(new BitmapFont(), Color.FIREBRICK));
+        worldLabel = new Label("", new Label.LabelStyle(new BitmapFont(), Color.FIREBRICK));
         marioLabel = new Label("KOZA", new Label.LabelStyle(new BitmapFont(), Color.FIREBRICK));
 
         //add our labels to our table, padding the top, and giving them all equal width with expandX

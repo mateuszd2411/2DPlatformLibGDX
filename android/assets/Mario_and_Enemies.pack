@@ -53,16 +53,23 @@ dog
   offset: 0, 0
   index: -1
 fire
-rotate: false
-xy: 341, 9
-size: 63, 18
-orig: 63, 18
-offset: 0, 0
-index: -1
+    rotate: false
+    xy: 341, 9
+    size: 63, 18
+    orig: 63, 18
+    offset: 0, 0
+    index: -1
 trampoline
-rotate: false
-xy: 106, 34
-size: 66, 11
-orig: 66, 11
-offset: 0, 0
-index: -1
+    rotate: false
+    xy: 106, 34
+    size: 66, 11
+    orig: 66, 11
+    offset: 0, 0
+    index: -1
+mouth
+    rotate: false
+    xy: 407, 1
+    size: 100, 26
+    orig: 100, 26
+    offset: 0, 0
+    index: -1

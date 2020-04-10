@@ -1,5 +1,6 @@
 package com.mat.mariobros.Sprites;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -365,7 +366,9 @@ public class Mario extends Sprite {
 
     public void defineMario(){
         BodyDef bdef = new BodyDef();
-        bdef.position.set(900 / MarioBros.PPM, 32 / MarioBros.PPM);            ////// bdef.position.set(604 / MarioBros.PPM, 115 / MarioBros.PPM);
+
+        Gdx.gl.glClearColor(0.0f, 0.0f, 0.f, 1.0f);
+        bdef.position.set(1600 / MarioBros.PPM, 32 / MarioBros.PPM);            ////// bdef.position.set(604 / MarioBros.PPM, 115 / MarioBros.PPM);
         bdef.type = BodyDef.BodyType.DynamicBody;
         b2body = world.createBody(bdef);
 
@@ -376,7 +379,7 @@ public class Mario extends Sprite {
         fdef.filter.maskBits = MarioBros.GROUND_BIT |
                 MarioBros.COIN_BIT |
                 MarioBros.BRICK_BIT |
-                MarioBros.ENEMY_BIT |
+//                MarioBros.ENEMY_BIT |
                 MarioBros.OBJECT_BIT |
                 MarioBros.ENEMY_HEAD_BIT |
                 MarioBros.ITEM_BIT;
