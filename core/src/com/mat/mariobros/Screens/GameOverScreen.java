@@ -51,7 +51,7 @@ public class GameOverScreen implements Screen {
     @Override
     public void render(float delta) {
         if (Gdx.input.justTouched()){
-            game.setScreen(new PlayScreen((MarioBros)game));
+            game.setScreen(new PlayScreen((MarioBros)game));        ///new game
             dispose();
         }
 

@@ -99,7 +99,7 @@ public class Goomba extends Enemy {
     }
 
     public void draw(Batch batch){
-        if (!destroyed || stateTime <1)
+        if (!destroyed || stateTime <2)
             super.draw(batch);
 
     }
@@ -116,7 +116,7 @@ public class Goomba extends Enemy {
     @Override
     public void flamed(FireBall fireball) {
         setToDestroy = true;
-        Hud.addScore(100);
+        Hud.addScore(10);
         fireball.setToDestroy();
 
     }
@@ -124,7 +124,7 @@ public class Goomba extends Enemy {
     @Override
     public void flamed(Bomb bomb) {
         setToDestroy = true;
-        Hud.addScore(100);
+        Hud.addScore(10);
         bomb.setToDestroy();
     }
 

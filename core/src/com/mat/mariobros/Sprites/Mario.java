@@ -112,6 +112,9 @@ public class Mario extends Sprite {
 
     }
 
+
+
+
     public void update(float dt){
 
         // time is up : too late mario dies T_T
@@ -379,7 +382,7 @@ public class Mario extends Sprite {
         fdef.filter.maskBits = MarioBros.GROUND_BIT |
                 MarioBros.COIN_BIT |
                 MarioBros.BRICK_BIT |
-//                MarioBros.ENEMY_BIT |
+                MarioBros.ENEMY_BIT |
                 MarioBros.OBJECT_BIT |
                 MarioBros.ENEMY_HEAD_BIT |
                 MarioBros.ITEM_BIT;

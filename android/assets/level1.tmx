@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.2" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="1000" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="19" nextobjectid="722">
+<map version="1.2" tiledversion="1.3.2" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="1000" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="19" nextobjectid="726">
  <tileset firstgid="1" name="tileset_gutter" tilewidth="16" tileheight="16" spacing="2" margin="1" tilecount="924" columns="33">
   <image source="tileset_gutter.png" width="594" height="504"/>
   <tile id="0">
@@ -118,7 +118,7 @@
  </layer>
  <layer id="2" name="Graphic Layer" width="1000" height="13">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <objectgroup id="3" name="Ground">
@@ -166,7 +166,6 @@
   <object id="459" x="4416" y="-160" width="576" height="112"/>
   <object id="486" x="336" y="128" width="32" height="48"/>
   <object id="591" x="416" y="176" width="192" height="32"/>
-  <object id="592" x="832" y="176" width="496" height="32"/>
   <object id="594" x="704" y="176" width="96" height="16"/>
   <object id="595" x="688" y="176" width="16" height="16"/>
   <object id="596" x="592" y="208" width="272"/>
@@ -196,6 +195,8 @@
   <object id="573" x="-83.3333" y="-96" width="371.333" height="2.66667"/>
   <object id="599" x="703.455" y="15.6364" width="1.27273" height="1.81818"/>
   <object id="601" x="766.545" y="15.0909" width="1.81818" height="2.36364"/>
+  <object id="724" x="960.545" y="167.273" width="79.4545" height="6.36364"/>
+  <object id="725" x="832" y="176" width="496" height="32"/>
  </objectgroup>
  <objectgroup id="5" name="Coins">
   <object id="174" x="480" y="128" width="16" height="16"/>
