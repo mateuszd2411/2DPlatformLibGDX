@@ -371,7 +371,7 @@ public class Mario extends Sprite {
         BodyDef bdef = new BodyDef();
 
         Gdx.gl.glClearColor(0.0f, 0.0f, 0.f, 1.0f);
-        bdef.position.set(1600 / MarioBros.PPM, 32 / MarioBros.PPM);            ////// bdef.position.set(604 / MarioBros.PPM, 115 / MarioBros.PPM);
+        bdef.position.set(64 / MarioBros.PPM, 32 / MarioBros.PPM);            ////// bdef.position.set(604 / MarioBros.PPM, 115 / MarioBros.PPM);
         bdef.type = BodyDef.BodyType.DynamicBody;
         b2body = world.createBody(bdef);
 
@@ -382,7 +382,7 @@ public class Mario extends Sprite {
         fdef.filter.maskBits = MarioBros.GROUND_BIT |
                 MarioBros.COIN_BIT |
                 MarioBros.BRICK_BIT |
-                MarioBros.ENEMY_BIT |
+//                MarioBros.ENEMY_BIT |
                 MarioBros.OBJECT_BIT |
                 MarioBros.ENEMY_HEAD_BIT |
                 MarioBros.ITEM_BIT;

@@ -17,6 +17,7 @@ import com.mat.mariobros.Sprites.Enemies.Enemy;
 import com.mat.mariobros.Sprites.Enemies.Fire;
 import com.mat.mariobros.Sprites.Enemies.FireRain;
 import com.mat.mariobros.Sprites.Enemies.MonsterMouths;
+import com.mat.mariobros.Sprites.Enemies.Raft;
 import com.mat.mariobros.Sprites.Enemies.Trampoline;
 import com.mat.mariobros.Sprites.Enemies.Turtle;
 import com.mat.mariobros.Sprites.TitleObjects.Brick;
@@ -29,6 +30,7 @@ public class B2WorldCreator {
     private Array<Fire> fires;
     private Array<FireRain> fireRains;
     private Array<MonsterMouths> monsterMouths;
+    private Array<Raft> rafts;
     private Array<Trampoline> trampolines;
     private Array<Turtle> turtles;
 
@@ -150,6 +152,17 @@ public class B2WorldCreator {
 
         ///create MonsterMouths
 
+
+        ///create Raft
+
+        rafts = new Array<Raft>();
+        for (MapObject object : map.getLayers().get(13).getObjects().getByType(RectangleMapObject.class)){
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+            rafts.add(new Raft(screen, rect.getX() / MarioBros.PPM, rect.getY() / MarioBros.PPM));
+        }
+
+        ///create Raft
+
     }
 
     public Array<Goomba> getGoombas() {
@@ -196,6 +209,14 @@ public class B2WorldCreator {
 
     ///MonsterMouths
 
+    ///Raft
+
+    public Array<Raft> getRafts() {
+        return rafts;
+    }
+
+    ///Raft
+
     public Array<Enemy> getEnemies(){
         Array<Enemy> enemies = new Array<Enemy>();
         enemies.addAll(goombas);
@@ -203,6 +224,7 @@ public class B2WorldCreator {
         enemies.addAll(fires);
         enemies.addAll(fireRains);
         enemies.addAll(monsterMouths);
+        enemies.addAll(rafts);
         enemies.addAll(turtles);
         enemies.addAll(trampolines);
         return enemies;

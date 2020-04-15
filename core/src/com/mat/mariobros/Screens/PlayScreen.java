@@ -39,7 +39,7 @@ public class PlayScreen
         implements Screen {
     public static boolean alreadyDestroyed = false;
     private TextureAtlas atlas = new TextureAtlas("Mario_and_Enemies.pack");
-//    private Box2DDebugRenderer b2dr;
+    private Box2DDebugRenderer b2dr;
     private B2WorldCreator creator;
     private MarioBros game;
     private Viewport gamePort;
@@ -64,7 +64,7 @@ public class PlayScreen
         this.renderer = new OrthogonalTiledMapRenderer(this.map, 0.01f);
         this.gamecam.position.set(this.gamePort.getWorldWidth() / 2.0f, this.gamePort.getWorldHeight() / 2.0f, 0.0f);               /////////this.gamecam.position.set(this.gamePort.getWorldWidth() / 2.0f, this.gamePort.getWorldHeight() / 2.0f, 0.0f);
         this.world = new World(new Vector2(0.0f, -10.0f), true);        ///grawitacja
-//        this.b2dr = new Box2DDebugRenderer();
+        this.b2dr = new Box2DDebugRenderer();
         this.creator = new B2WorldCreator(this);
         this.player = new Mario(this);
         this.world.setContactListener(new WorldContactListener());
@@ -81,7 +81,7 @@ public class PlayScreen
         this.map.dispose();
         this.renderer.dispose();
         this.world.dispose();
-//        this.b2dr.dispose();
+        this.b2dr.dispose();
         this.hud.dispose();
     }
 
@@ -159,7 +159,7 @@ public class PlayScreen
         Gdx.gl.glClearColor(0.0f, 0.0f, 0.f, 1.0f);
         Gdx.gl.glClear(16384);
         this.renderer.render();
-//        this.b2dr.render(this.world, this.gamecam.combined);
+        this.b2dr.render(this.world, this.gamecam.combined);
         MarioBros.batch.setProjectionMatrix(this.gamecam.combined);
         MarioBros.batch.begin();
         Mario mario = this.player;

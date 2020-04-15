@@ -18,7 +18,7 @@ public class GameOverScreen implements Screen {
     private Viewport viewport;
     private Stage stage;
 
-    private Game game;
+    public static Game game;
 
     public GameOverScreen(Game game) {
         this.game = game;
