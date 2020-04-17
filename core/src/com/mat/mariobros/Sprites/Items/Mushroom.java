@@ -19,12 +19,12 @@ public class Mushroom extends Item {
     public void defineItem() {
         BodyDef bdef = new BodyDef();
         bdef.position.set(getX(), getY());
-        bdef.type = BodyDef.BodyType.DynamicBody;
+        bdef.type = BodyDef.BodyType.StaticBody;
         body = world.createBody(bdef);
 
         FixtureDef fdef = new FixtureDef();
         CircleShape shape = new CircleShape();
-        shape.setRadius(60 / MarioBros.PPM);
+        shape.setRadius(3 / MarioBros.PPM);
         fdef.filter.categoryBits = MarioBros.ITEM_BIT;
         fdef.filter.maskBits = MarioBros.MARIO_BIT |
                 MarioBros.OBJECT_BIT |

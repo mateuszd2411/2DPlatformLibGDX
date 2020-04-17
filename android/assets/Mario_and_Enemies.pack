@@ -73,3 +73,10 @@ mouth
     orig: 100, 26
     offset: 0, 0
     index: -1
+par
+    rotate: false
+    xy: 516, 1
+    size: 420, 60
+    orig: 420, 60
+    offset: 0, 0
+    index: -1

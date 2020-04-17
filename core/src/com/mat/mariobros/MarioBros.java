@@ -46,6 +46,9 @@ public class MarioBros
 		manager.load("audio/sounds/bomb.wav", Sound.class);
 		manager.load("audio/sounds/nope.wav", Sound.class);
 		manager.load("audio/sounds/dog.wav", Sound.class);
+		manager.load("audio/sounds/par.mp3", Sound.class);
+		manager.load("audio/sounds/yeah.mp3", Sound.class);
+		manager.load("audio/sounds/mee.mp3", Music.class);
 		manager.finishLoading();
 		this.setScreen(new PlayScreen(this));
 		controller = new Controller();

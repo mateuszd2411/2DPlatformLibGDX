@@ -215,14 +215,20 @@ public class Mario extends Sprite {
             return State.DEAD;
         else if(runGrowAnimation)
             return State.GROWING;
-        else if((b2body.getLinearVelocity().y > 0 && currentState == State.JUMPING) || (b2body.getLinearVelocity().y < 0 && previousState == State.JUMPING))
+        else if((b2body.getLinearVelocity().y > 0 && currentState == State.JUMPING) || (b2body.getLinearVelocity().y < 0 && previousState == State.JUMPING)){
+            MarioBros.manager.get("audio/sounds/mee.mp3", Music.class).play();
             return State.JUMPING;
+        }
             //if negative in Y-Axis mario is falling
-        else if(b2body.getLinearVelocity().y < 0)
+        else if(b2body.getLinearVelocity().y < 0){
             return State.FALLING;
-            //if mario is positive or negative in the X axis he is running
-        else if(b2body.getLinearVelocity().x != 0)
+        }
+
+        //if mario is positive or negative in the X axis he is running
+        else if(b2body.getLinearVelocity().x != 0){
+
             return State.RUNNING;
+        }
             //if none of these return then he must be standing
         else
             return State.STANDING;
@@ -233,7 +239,7 @@ public class Mario extends Sprite {
             runGrowAnimation = true;
             marioIsBig = true;
             timeToDefineBigMario = true;
-            setBounds(getX(), getY(), getWidth(), getHeight());  /////////getHeight() * 2);
+            setBounds(getX(), getY(), getWidth()*1.3f, getHeight()*1.5f);  /////////getHeight() * 2);
             MarioBros.manager.get("audio/sounds/powerup.wav", Sound.class).play();
         }
     }
@@ -271,7 +277,7 @@ public class Mario extends Sprite {
     public void jump(){
         if ( currentState != State.JUMPING ) {
             if (Mario.marioIsBig){
-                b2body.applyLinearImpulse(new Vector2(0.2f, 5.5f), b2body.getWorldCenter(), true);
+                b2body.applyLinearImpulse(new Vector2(0.2f, 4.5f), b2body.getWorldCenter(), true);
                 currentState = State.JUMPING;
             }else
             b2body.applyLinearImpulse(new Vector2(0.2f, 3.5f), b2body.getWorldCenter(), true);
@@ -335,7 +341,7 @@ public class Mario extends Sprite {
         world.destroyBody(b2body);
 
         BodyDef bdef = new BodyDef();
-        bdef.position.set(currentPosition.add(0, 0 / MarioBros.PPM));     ////telteportacja
+        bdef.position.set(currentPosition.add(40, 32 / MarioBros.PPM));     ////telteportacja
         bdef.type = BodyDef.BodyType.DynamicBody;
         b2body = world.createBody(bdef);
 
@@ -370,8 +376,8 @@ public class Mario extends Sprite {
     public void defineMario(){
         BodyDef bdef = new BodyDef();
 
-        Gdx.gl.glClearColor(0.0f, 0.0f, 0.f, 1.0f);
-        bdef.position.set(64 / MarioBros.PPM, 32 / MarioBros.PPM);            ////// bdef.position.set(604 / MarioBros.PPM, 115 / MarioBros.PPM);
+        Gdx.gl.glClearColor(.0f, 0.0f, 0.f, 1.0f);
+        bdef.position.set(40 / MarioBros.PPM, 40 / MarioBros.PPM);            ////// bdef.position.set(604 / MarioBros.PPM, 115 / MarioBros.PPM);
         bdef.type = BodyDef.BodyType.DynamicBody;
         b2body = world.createBody(bdef);
 
@@ -382,7 +388,7 @@ public class Mario extends Sprite {
         fdef.filter.maskBits = MarioBros.GROUND_BIT |
                 MarioBros.COIN_BIT |
                 MarioBros.BRICK_BIT |
-//                MarioBros.ENEMY_BIT |
+                MarioBros.ENEMY_BIT |
                 MarioBros.OBJECT_BIT |
                 MarioBros.ENEMY_HEAD_BIT |
                 MarioBros.ITEM_BIT;
