@@ -1,10 +1,12 @@
 package com.mat.mariobros.Sprites.Enemies;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.Animation;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.CircleShape;
@@ -76,7 +78,7 @@ public class Par extends Enemy {
                 MarioBros.ENEMY_BIT |
                 MarioBros.OBJECT_BIT|
                 MarioBros.MARIO_BIT|
-//                MarioBros.FIREBALL_BIT|
+                MarioBros.FIREBALL_BIT|
                 MarioBros.BOMB_BIT;
 
         fdef.shape = shape;
@@ -105,9 +107,12 @@ public class Par extends Enemy {
     }
 
     public void hitByEnemy(Enemy enemy){
+        System.out.println(MathUtils.random(100));
+        if (MathUtils.random(100) > 5){
 
-        if (enemy instanceof Turtle && ((Turtle) enemy).currentState == Turtle.State.MOVING_SHELL)
-            setToDestroy = true;
+                setToDestroy = true;
+
+        }
         else
             reverseVelocity(true, false);
 
@@ -115,8 +120,12 @@ public class Par extends Enemy {
 
     @Override
     public void flamed(FireBall fireball) {
-        setToDestroy = true;
-        Hud.addScore(10);
+        System.out.println(MathUtils.random(100));
+        if (MathUtils.random(100) < 10){
+            setToDestroy = true;
+            Hud.addScore(10);
+        }
+
         fireball.setToDestroy();
     }
 
@@ -129,8 +138,12 @@ public class Par extends Enemy {
 
     @Override
     public void hitOnHead(Mario mario) {
-        setToDestroy = true;
-        MarioBros.manager.get("audio/sounds/par.mp3", Sound.class).play();
+        System.out.println(MathUtils.random(100));
+        if (MathUtils.random(100) < 5){
+            setToDestroy = true;
+            MarioBros.manager.get("audio/sounds/par.mp3", Sound.class).play();
+        }
+
 
     }
 }

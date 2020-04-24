@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
@@ -295,7 +296,10 @@ public class Mario extends Sprite {
                 setBounds(getX(), getY(), getWidth(), getHeight() / 2);
                 MarioBros.manager.get("audio/sounds/powerdown.wav", Sound.class).play();
             } else {
-                die();
+                System.out.println(MathUtils.random(100));
+                if (MathUtils.random(10) < 5){
+                    die();
+                }
             }
         }
     }

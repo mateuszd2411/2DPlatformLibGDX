@@ -54,6 +54,8 @@ public class PlayScreen
     private OrthogonalTiledMapRenderer renderer;
     private World world;
 
+    private float timeHelper;
+
     public PlayScreen(MarioBros marioBros) {
         this.game = marioBros;
         this.gamecam = new OrthographicCamera();
@@ -133,6 +135,13 @@ public class PlayScreen
                 this.player.putBomb();
             }
             //bomb
+            if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT)){
+                gamecam.zoom += 0.02f;
+            }
+
+            if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_RIGHT)){
+                gamecam.zoom -= 0.02f;
+            }
         }
     }
 
@@ -216,5 +225,11 @@ public class PlayScreen
         }
         this.gamecam.update();
         this.renderer.setView(this.gamecam);
+
+//        timeHelper += Gdx.graphics.getDeltaTime();
+//        if (timeHelper > 0.02f){
+//            gamecam.rotate(0.20f);
+//            timeHelper = 0;
+//        }
     }
 }
