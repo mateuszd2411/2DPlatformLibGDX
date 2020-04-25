@@ -95,6 +95,7 @@ public class Controller {
 
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                System.out.println("up pressed");
                 upPressed = false;
             }
         });

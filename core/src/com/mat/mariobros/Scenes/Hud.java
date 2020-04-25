@@ -6,10 +6,13 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -19,7 +22,7 @@ import com.mat.mariobros.MarioBros;
 public class Hud implements Disposable{
 
     //Scene2D.ui Stage and its own Viewport for HUD
-    public Stage stage;
+    public static Stage stage;
     private Viewport viewport;
 
     //Mario score/time Tracking Variables
@@ -41,7 +44,7 @@ public class Hud implements Disposable{
 
     public static Preferences prefs;
 
-    private Button resetScoreButton;
+    public static Button resetScoreButton;
 
     public Hud(SpriteBatch sb){
         //define our tracking variables
@@ -59,6 +62,9 @@ public class Hud implements Disposable{
         //define our stage using that viewport and our games spritebatch
         viewport = new FitViewport(MarioBros.V_WIDTH, MarioBros.V_HEIGHT, new OrthographicCamera());
         stage = new Stage(viewport, sb);
+
+//        initResetScoreButton();
+
 
         //define a table used to organize our hud's labels
         Table table = new Table();
@@ -88,7 +94,7 @@ public class Hud implements Disposable{
         //add our table to the stage
         stage.addActor(table);
 
-        initResetScoreButton();
+
 
     }
 
@@ -112,20 +118,33 @@ public class Hud implements Disposable{
         prefs.flush();
     }
 
-    @Override
-    public void dispose() { stage.dispose(); }
+
 
     public boolean isTimeUp() { return timeUp; }
 
-    private void initResetScoreButton() {
-        System.out.println("dsds");
-        resetScoreButton = new Button(new Button.ButtonStyle());
-        resetScoreButton.setWidth(30);
-        resetScoreButton.setHeight(30);
-        resetScoreButton.setX(150);
-        resetScoreButton.setY(170);
-        resetScoreButton.setDebug(true);
-
-        stage.addActor(resetScoreButton);
+    public static void resetGameScore() {
+        System.out.println("reset score");
+        score = 0;
+        prefs.putInteger(GAME_SCORE,score);
+        prefs.flush();
     }
+
+//    public static void initResetScoreButton() {
+//        System.out.println("button");
+//
+//
+//        resetScoreButton = new Button(new Button.ButtonStyle());
+//        resetScoreButton.setWidth(30);
+//        resetScoreButton.setHeight(30);
+//        resetScoreButton.setX(150);
+//        resetScoreButton.setY(170);
+//        resetScoreButton.setDebug(true);
+//
+//        stage.addActor(resetScoreButton);
+//
+//    }
+
+
+    @Override
+    public void dispose() { stage.dispose(); }
 }

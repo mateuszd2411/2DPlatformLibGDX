@@ -158,10 +158,19 @@ public class PlayScreen
                 this.player.putBomb();
             }
             //bomb
+
+            //cam zoom
             if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT)){
                 gamecam.zoom += 0.02f;
 
             }
+
+            if (Gdx.input.isKeyPressed(Input.Keys.J)){
+                Hud.score = 0;
+                Hud.resetGameScore();
+
+            }
+
         }
     }
 
