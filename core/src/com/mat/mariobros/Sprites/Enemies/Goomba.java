@@ -141,7 +141,7 @@ public class Goomba extends Enemy {
     public void hitOnHead(Mario mario) {
 
 
-//        setToDestroy = true;
+        setToDestroy = true;
         MarioBros.manager.get("audio/sounds/stomp.wav", Sound.class).play();
 
     }

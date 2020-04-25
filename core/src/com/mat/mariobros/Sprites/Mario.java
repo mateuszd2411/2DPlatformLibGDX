@@ -18,6 +18,7 @@ import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.Timer;
 import com.mat.mariobros.MarioBros;
 import com.mat.mariobros.Screens.PlayScreen;
 import com.mat.mariobros.Sprites.Enemies.Enemy;
@@ -297,13 +298,18 @@ public class Mario extends Sprite {
                 setBounds(getX(), getY(), getWidth(), getHeight() / 2);
                 MarioBros.manager.get("audio/sounds/powerdown.wav", Sound.class).play();
             } else {
-                System.out.println(MathUtils.random(100));
-                if (MathUtils.random(10) < 5){
+                if (FlyingObject.touch = true){
                     die();
-                }else {
-                    System.out.println("down");
-                    MarioBros.manager.get("audio/sounds/powerdown.wav", Sound.class).play();
                 }
+
+                ///////////////////////////////////////////////////////Random die
+//                System.out.println(MathUtils.random(100));
+//                if (MathUtils.random(10) < 5){
+//                    die();
+//                }else {
+//                    System.out.println("down");
+//                    MarioBros.manager.get("audio/sounds/powerdown.wav", Sound.class).play();
+//                }
             }
         }
     }
@@ -393,25 +399,47 @@ public class Mario extends Sprite {
         CircleShape shape = new CircleShape();
         shape.setRadius(6 / MarioBros.PPM);
         fdef.filter.categoryBits = MarioBros.MARIO_BIT;
+        fdef.filter.maskBits = MarioBros.GROUND_BIT |
+                MarioBros.COIN_BIT |
+                MarioBros.BRICK_BIT |
+                MarioBros.ENEMY_BIT |
+                MarioBros.OBJECT_BIT |
+                MarioBros.ENEMY_HEAD_BIT |
+                MarioBros.ITEM_BIT;
 
 
-        if (FlyingObject.touch = false){
-            fdef.filter.maskBits = MarioBros.GROUND_BIT |
-                    MarioBros.COIN_BIT |
-                    MarioBros.BRICK_BIT |
-                    MarioBros.ENEMY_BIT |
-                    MarioBros.OBJECT_BIT |
-                    MarioBros.ENEMY_HEAD_BIT |
-                    MarioBros.ITEM_BIT;
-        }else {
-            fdef.filter.maskBits = MarioBros.GROUND_BIT |
-                    MarioBros.COIN_BIT |
-                    MarioBros.BRICK_BIT |
-//                    MarioBros.ENEMY_BIT |
-                    MarioBros.OBJECT_BIT |
-                    MarioBros.ENEMY_HEAD_BIT |
-                    MarioBros.ITEM_BIT;
-        }
+//        if (FlyingObject.touch = false){
+//            fdef.filter.maskBits = MarioBros.GROUND_BIT |
+//                    MarioBros.COIN_BIT |
+//                    MarioBros.BRICK_BIT |
+////                    MarioBros.ENEMY_BIT |
+//                    MarioBros.OBJECT_BIT |
+//                    MarioBros.ENEMY_HEAD_BIT |
+//                    MarioBros.ITEM_BIT;
+//        }
+
+//        if (FlyingObject.touch = true){
+//
+//
+//            Timer.schedule(new Timer.Task(){
+//                @Override
+//                public void run() {
+//                    // Do something
+//                    System.out.println("sek");
+//
+//                    fdef.filter.maskBits = MarioBros.GROUND_BIT |
+//                            MarioBros.COIN_BIT |
+//                            MarioBros.BRICK_BIT |
+////                            MarioBros.ENEMY_BIT |
+//                            MarioBros.OBJECT_BIT |
+//                            MarioBros.ENEMY_HEAD_BIT |
+//                            MarioBros.ITEM_BIT;
+//
+//                }
+//            }, 10);
+//
+//
+//        }
 
         fdef.shape = shape;
         b2body.createFixture(fdef).setUserData(this);

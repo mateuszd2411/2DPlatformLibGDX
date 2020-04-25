@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.Timer;
 import com.mat.mariobros.MarioBros;
 
 public class FlyingObject extends Image {
@@ -34,6 +35,23 @@ public class FlyingObject extends Image {
                 System.out.println("touched");
                 touch = true;
 
+//                Timer.schedule(new Timer.Task() {
+//                    @Override
+//                    public void run() {
+//                        System.out.println("mor");
+//
+//
+//                    }
+//                },2,50);
+
+
+                Timer.schedule(new Timer.Task(){
+                    @Override
+                    public void run() {
+                        // Do something
+                        System.out.println("sek");
+                    }
+                }, 1);
 
                 FlyingObject.this.remove();
                 return super.touchDown(event, x, y, pointer, button);

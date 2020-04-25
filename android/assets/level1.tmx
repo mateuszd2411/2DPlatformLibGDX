@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.2" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="1000" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="21" nextobjectid="1494">
+<map version="1.2" tiledversion="1.3.2" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="1000" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="21" nextobjectid="1499">
  <tileset firstgid="1" name="tileset_gutter" tilewidth="16" tileheight="16" spacing="2" margin="1" tilecount="924" columns="33">
   <image source="tileset_gutter.png" width="594" height="504"/>
   <tile id="0">
@@ -471,6 +471,10 @@
   <object id="1305" x="4401.33" y="20"/>
   <object id="1348" x="3167.82" y="99.8182"/>
   <object id="1417" x="530.667" y="163"/>
+  <object id="1495" x="224.667" y="159.333"/>
+  <object id="1496" x="277.667" y="160"/>
+  <object id="1497" x="310.667" y="159"/>
+  <object id="1498" x="175.333" y="159.333"/>
  </objectgroup>
  <objectgroup id="8" name="Turtles">
   <object id="1296" x="3132.67" y="178"/>
@@ -489,9 +493,6 @@
   <object id="1295" x="2274.67" y="162.667"/>
   <object id="1359" x="2932.67" y="66"/>
   <object id="1389" x="4839" y="178"/>
-  <object id="1427" x="224" y="160" width="16" height="16"/>
-  <object id="1428" x="256" y="160" width="16" height="16"/>
-  <object id="1429" x="208" y="160" width="16" height="16"/>
  </objectgroup>
  <objectgroup id="14" name="pain">
   <object id="524" x="373.333" y="186"/>
@@ -587,7 +588,6 @@
   <object id="1379" x="5175.25" y="201"/>
  </objectgroup>
  <objectgroup id="16" name="Trampoline">
-  <object id="568" x="298" y="169.333"/>
   <object id="569" x="659" y="89"/>
   <object id="1252" x="3294.67" y="131.667"/>
  </objectgroup>
