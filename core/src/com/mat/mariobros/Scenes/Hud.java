@@ -33,7 +33,7 @@ public class Hud implements Disposable{
 
     //Scene2D widgets
     private Label countdownLabel;
-    private static Label scoreLabel;
+    public static Label scoreLabel;
     private Label timeLabel;
     private Label levelLabel;
     private Label worldLabel;

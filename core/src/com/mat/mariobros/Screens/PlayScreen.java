@@ -165,8 +165,9 @@ public class PlayScreen
 
             }
 
-            if (Gdx.input.isKeyPressed(Input.Keys.J)){
-                Hud.score = 0;
+            if (Gdx.input.isKeyJustPressed(Input.Keys.J)){
+//                Hud.score = 0;
+                Hud.scoreLabel.setText(String.format("%06d", 0));
                 Hud.resetGameScore();
 
             }
