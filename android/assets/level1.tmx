@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.2" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="1000" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="21" nextobjectid="1427">
+<map version="1.2" tiledversion="1.3.2" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="1000" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="21" nextobjectid="1428">
  <tileset firstgid="1" name="tileset_gutter" tilewidth="16" tileheight="16" spacing="2" margin="1" tilecount="924" columns="33">
   <image source="tileset_gutter.png" width="594" height="504"/>
   <tile id="0">
@@ -460,6 +460,7 @@
   <object id="1295" x="2274.67" y="162.667"/>
   <object id="1359" x="2932.67" y="66"/>
   <object id="1389" x="4839" y="178"/>
+  <object id="1427" x="224" y="160" width="16" height="16"/>
  </objectgroup>
  <objectgroup id="14" name="pain">
   <object id="524" x="373.333" y="186"/>

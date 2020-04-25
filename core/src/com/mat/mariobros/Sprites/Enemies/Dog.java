@@ -48,6 +48,9 @@ public class Dog extends Enemy {
             MarioBros.manager.get("audio/sounds/dog.wav", Sound.class).play();
             setRegion(new TextureRegion(screen.getAtlas().findRegion("dog"), 44,0,22,18));
             stateTime = 0;
+
+            Hud.score = Hud.score -50;
+            Hud.scoreLabel.setText(String.format("%06d",Hud.score  ));
         }
         else if (!destroyedDog) {
 
