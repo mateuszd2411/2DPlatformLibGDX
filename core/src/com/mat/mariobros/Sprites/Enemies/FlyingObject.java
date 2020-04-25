@@ -11,6 +11,7 @@ import com.mat.mariobros.MarioBros;
 public class FlyingObject extends Image {
 
     public final static String MONEY = "badlogic.jpg";
+    public static boolean touch = false;
 
     private  final  static int WIDHT = 150;
     private  final  static int HEIGHT = 100;
@@ -31,6 +32,9 @@ public class FlyingObject extends Image {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 
                 System.out.println("touched");
+                touch = true;
+
+
                 FlyingObject.this.remove();
                 return super.touchDown(event, x, y, pointer, button);
             }

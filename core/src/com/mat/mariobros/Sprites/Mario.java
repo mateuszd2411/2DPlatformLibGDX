@@ -21,6 +21,7 @@ import com.badlogic.gdx.utils.Array;
 import com.mat.mariobros.MarioBros;
 import com.mat.mariobros.Screens.PlayScreen;
 import com.mat.mariobros.Sprites.Enemies.Enemy;
+import com.mat.mariobros.Sprites.Enemies.FlyingObject;
 import com.mat.mariobros.Sprites.Enemies.Turtle;
 import com.mat.mariobros.Sprites.Other.Bomb;
 import com.mat.mariobros.Sprites.Other.FireBall;
@@ -392,13 +393,25 @@ public class Mario extends Sprite {
         CircleShape shape = new CircleShape();
         shape.setRadius(6 / MarioBros.PPM);
         fdef.filter.categoryBits = MarioBros.MARIO_BIT;
-        fdef.filter.maskBits = MarioBros.GROUND_BIT |
-                MarioBros.COIN_BIT |
-                MarioBros.BRICK_BIT |
-                MarioBros.ENEMY_BIT |
-                MarioBros.OBJECT_BIT |
-                MarioBros.ENEMY_HEAD_BIT |
-                MarioBros.ITEM_BIT;
+
+
+        if (FlyingObject.touch = false){
+            fdef.filter.maskBits = MarioBros.GROUND_BIT |
+                    MarioBros.COIN_BIT |
+                    MarioBros.BRICK_BIT |
+                    MarioBros.ENEMY_BIT |
+                    MarioBros.OBJECT_BIT |
+                    MarioBros.ENEMY_HEAD_BIT |
+                    MarioBros.ITEM_BIT;
+        }else {
+            fdef.filter.maskBits = MarioBros.GROUND_BIT |
+                    MarioBros.COIN_BIT |
+                    MarioBros.BRICK_BIT |
+//                    MarioBros.ENEMY_BIT |
+                    MarioBros.OBJECT_BIT |
+                    MarioBros.ENEMY_HEAD_BIT |
+                    MarioBros.ITEM_BIT;
+        }
 
         fdef.shape = shape;
         b2body.createFixture(fdef).setUserData(this);
