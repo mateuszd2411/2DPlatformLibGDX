@@ -5,12 +5,19 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Interpolation;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
+import com.badlogic.gdx.scenes.scene2d.Action;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.Timer;
 import com.mat.mariobros.MarioBros;
 import com.mat.mariobros.Scenes.Hud;
 import com.mat.mariobros.Screens.PlayScreen;
@@ -25,6 +32,7 @@ public class Goomba extends Enemy {
     private Array<TextureRegion> frames;
     private boolean setToDestroy;
     private boolean destroyed;
+    private Actor actor;
 
 
     public Goomba(PlayScreen screen, float x, float y) {
@@ -33,6 +41,7 @@ public class Goomba extends Enemy {
         for (int i = 0; i < 2; i++)
             frames.add(new TextureRegion(screen.getAtlas().findRegion("goomba"), i * 16,0,16,16));
         walkAnimation = new Animation(0.4f, frames);
+        actor = new Actor();
         stateTime = 0;
         setBounds(getX(), getY(), 16/ MarioBros.PPM,16 / MarioBros.PPM);
         setToDestroy = false;
@@ -56,6 +65,7 @@ public class Goomba extends Enemy {
             setRegion((TextureRegion) walkAnimation.getKeyFrame(stateTime, true));
         }
     }
+
 
     @Override
     protected void defineEnemy() {
@@ -103,10 +113,11 @@ public class Goomba extends Enemy {
 
     }
 
-    public void hitByEnemy(Enemy enemy){
+    public void hitByEnemy(final Enemy enemy){
 
-        if (enemy instanceof Turtle && ((Turtle) enemy).currentState == Turtle.State.MOVING_SHELL)
+        if (enemy instanceof Turtle && ((Turtle) enemy).currentState == Turtle.State.MOVING_SHELL){
             setToDestroy = true;
+        }
         else
             reverseVelocity(true, false);
 
@@ -128,7 +139,9 @@ public class Goomba extends Enemy {
 
     @Override
     public void hitOnHead(Mario mario) {
-        setToDestroy = true;
+
+
+//        setToDestroy = true;
         MarioBros.manager.get("audio/sounds/stomp.wav", Sound.class).play();
 
     }

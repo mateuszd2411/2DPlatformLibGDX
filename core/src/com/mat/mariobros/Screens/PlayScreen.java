@@ -16,7 +16,12 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
@@ -36,6 +41,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 
 public class PlayScreen
+    extends Stage
         implements Screen {
     public static boolean alreadyDestroyed = false;
     private TextureAtlas atlas = new TextureAtlas("Mario_and_Enemies.pack");
@@ -53,8 +59,9 @@ public class PlayScreen
     private Mario player;
     private OrthogonalTiledMapRenderer renderer;
     private World world;
-
     private float timeHelper;
+    private Button playerButton;
+    protected Stage stage;
 
     public PlayScreen(MarioBros marioBros) {
         this.game = marioBros;
@@ -76,6 +83,22 @@ public class PlayScreen
         this.music.play();
         this.items = new Array();
         this.itemsToSpawn = new LinkedBlockingQueue();
+//        this.stage = new Stage(new StretchViewport(MarioBros.V_HEIGHT,MarioBros.V_HEIGHT,gamecam));
+//        initPlayerButton();
+
+
+
+
+
+//        after 1 s
+//        Timer.schedule(new Timer.Task() {
+//            @Override
+//            public void run() {
+//                System.out.println("11");
+//                gamecam.rotate(10);
+//            }
+//        },1);
+
     }
 
     @Override
@@ -137,10 +160,7 @@ public class PlayScreen
             //bomb
             if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT)){
                 gamecam.zoom += 0.02f;
-            }
 
-            if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_RIGHT)){
-                gamecam.zoom -= 0.02f;
             }
         }
     }
@@ -226,10 +246,35 @@ public class PlayScreen
         this.gamecam.update();
         this.renderer.setView(this.gamecam);
 
+
+
+        //rotate camera
 //        timeHelper += Gdx.graphics.getDeltaTime();
-//        if (timeHelper > 0.02f){
+//        if (timeHelper > 8.1f){
 //            gamecam.rotate(0.20f);
 //            timeHelper = 0;
-//        }
+//            System.out.println(timeHelper);}
+    }
+
+
+    private void initPlayerButton() {
+        playerButton = new Button(new Button.ButtonStyle());
+        playerButton.setWidth(460);
+        playerButton.setHeight(360);
+        playerButton.setX(10);
+        playerButton.setY(170);
+        playerButton.setDebug(true);
+
+        stage.addActor(playerButton);
+
+        playerButton.addListener(new ClickListener(){
+
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y,
+                                     int pointer, int button) {
+                System.out.println("click");
+                return super.touchDown(event, x, y, pointer, button);
+            }
+        });
     }
 }

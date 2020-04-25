@@ -1,5 +1,7 @@
 package com.mat.mariobros.Scenes;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -23,7 +25,7 @@ public class Hud implements Disposable{
     private Integer worldTimer;
     private boolean timeUp; // true when the world timer reaches 0
     private float timeCount;
-    private static Integer score;
+    public static Integer score;
 
     //Scene2D widgets
     private Label countdownLabel;
@@ -33,11 +35,19 @@ public class Hud implements Disposable{
     private Label worldLabel;
     private Label marioLabel;
 
+    public static String GAME_PREFS = "com.mygdx.mariobros.prefs";
+    public final  static  String GAME_SCORE = "com.mygdx.mariobros.prefs.score";
+
+    public static Preferences prefs;
+
     public Hud(SpriteBatch sb){
         //define our tracking variables
         worldTimer = 300;
         timeCount = 0;
-        score = 0;
+//        score = 0;
+        prefs = Gdx.app.getPreferences(GAME_PREFS);
+        score = prefs.getInteger(GAME_SCORE);
+//        score = MarioBros.prefs.getInteger(GAME_SCORE);
 
 
         //setup the HUD viewport using a new camera seperate from our gamecam
@@ -91,6 +101,8 @@ public class Hud implements Disposable{
     public static void addScore(int value){
         score += value;
         scoreLabel.setText(String.format("%06d", score));
+        prefs.putInteger(GAME_SCORE,score);
+        prefs.flush();
     }
 
     @Override

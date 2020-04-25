@@ -1,10 +1,13 @@
 package com.mat.mariobros;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mat.mariobros.Scenes.Hud;
 import com.mat.mariobros.Screens.PlayScreen;
 
 public class MarioBros
@@ -30,6 +33,9 @@ public class MarioBros
 	public static Controller controller;
 	public static AssetManager manager;
 
+
+//	public static Preferences prefs;
+
 	@Override
 	public void create() {
 		batch = new SpriteBatch();
@@ -52,6 +58,9 @@ public class MarioBros
 		manager.finishLoading();
 		this.setScreen(new PlayScreen(this));
 		controller = new Controller();
+
+//		prefs = Gdx.app.getPreferences(Hud.GAME_PREFS);
+//		Hud.score = prefs.getInteger(Hud.GAME_SCORE);
 	}
 
 	@Override
