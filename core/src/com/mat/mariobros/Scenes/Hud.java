@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -40,6 +41,8 @@ public class Hud implements Disposable{
 
     public static Preferences prefs;
 
+    private Button resetScoreButton;
+
     public Hud(SpriteBatch sb){
         //define our tracking variables
         worldTimer = 300;
@@ -48,6 +51,8 @@ public class Hud implements Disposable{
         prefs = Gdx.app.getPreferences(GAME_PREFS);
         score = prefs.getInteger(GAME_SCORE);
 //        score = MarioBros.prefs.getInteger(GAME_SCORE);
+
+
 
 
         //setup the HUD viewport using a new camera seperate from our gamecam
@@ -83,6 +88,8 @@ public class Hud implements Disposable{
         //add our table to the stage
         stage.addActor(table);
 
+        initResetScoreButton();
+
     }
 
     public void update(float dt){
@@ -109,4 +116,16 @@ public class Hud implements Disposable{
     public void dispose() { stage.dispose(); }
 
     public boolean isTimeUp() { return timeUp; }
+
+    private void initResetScoreButton() {
+        System.out.println("dsds");
+        resetScoreButton = new Button(new Button.ButtonStyle());
+        resetScoreButton.setWidth(30);
+        resetScoreButton.setHeight(30);
+        resetScoreButton.setX(150);
+        resetScoreButton.setY(170);
+        resetScoreButton.setDebug(true);
+
+        stage.addActor(resetScoreButton);
+    }
 }
