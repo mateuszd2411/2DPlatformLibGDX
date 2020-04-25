@@ -17,6 +17,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.mat.mariobros.Sprites.Enemies.FlyingObject;
 
 
 public class Controller {
@@ -25,10 +26,14 @@ public class Controller {
     boolean bombPress,upPressed, firePress, leftPressed, rightPressed;
     OrthographicCamera cam;
 
+    private FlyingObject flyingObject1;
+
     public Controller(){
         cam = new OrthographicCamera();
         viewport = new FitViewport(800, 480, cam);
         stage = new Stage(viewport, MarioBros.batch);
+
+        initFlyingObjects();
 
         stage.addListener(new InputListener(){
 
@@ -203,6 +208,13 @@ public class Controller {
         table.add();
 
         stage.addActor(table);
+    }
+
+    private void initFlyingObjects() {
+        System.out.println("con");
+        flyingObject1 = new FlyingObject();
+        stage.addActor(flyingObject1);
+        flyingObject1.flylikeHell();
     }
 
     public void draw(){

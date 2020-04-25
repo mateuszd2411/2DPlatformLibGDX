@@ -49,7 +49,7 @@ public class Dog extends Enemy {
             setRegion(new TextureRegion(screen.getAtlas().findRegion("dog"), 44,0,22,18));
             stateTime = 0;
 
-            Hud.score = Hud.score -50;
+            Hud.score = Hud.score -13;
             Hud.scoreLabel.setText(String.format("%06d",Hud.score  ));
         }
         else if (!destroyedDog) {

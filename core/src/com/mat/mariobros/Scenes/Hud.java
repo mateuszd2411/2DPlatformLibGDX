@@ -17,6 +17,7 @@ import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mat.mariobros.MarioBros;
+import com.mat.mariobros.Sprites.Enemies.FlyingObject;
 
 
 public class Hud implements Disposable{
@@ -39,6 +40,7 @@ public class Hud implements Disposable{
     private Label worldLabel;
     private Label marioLabel;
 
+
     public static String GAME_PREFS = "com.mygdx.mariobros.prefs";
     public final  static  String GAME_SCORE = "com.mygdx.mariobros.prefs.score";
 
@@ -56,15 +58,12 @@ public class Hud implements Disposable{
 //        score = MarioBros.prefs.getInteger(GAME_SCORE);
 
 
-
-
         //setup the HUD viewport using a new camera seperate from our gamecam
         //define our stage using that viewport and our games spritebatch
         viewport = new FitViewport(MarioBros.V_WIDTH, MarioBros.V_HEIGHT, new OrthographicCamera());
         stage = new Stage(viewport, sb);
 
 //        initResetScoreButton();
-
 
         //define a table used to organize our hud's labels
         Table table = new Table();
@@ -93,6 +92,7 @@ public class Hud implements Disposable{
 
         //add our table to the stage
         stage.addActor(table);
+
 
 
 

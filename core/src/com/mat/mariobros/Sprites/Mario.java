@@ -299,6 +299,9 @@ public class Mario extends Sprite {
                 System.out.println(MathUtils.random(100));
                 if (MathUtils.random(10) < 5){
                     die();
+                }else {
+                    System.out.println("down");
+                    MarioBros.manager.get("audio/sounds/powerdown.wav", Sound.class).play();
                 }
             }
         }

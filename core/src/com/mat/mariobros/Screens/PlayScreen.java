@@ -29,6 +29,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mat.mariobros.MarioBros;
 import com.mat.mariobros.Scenes.Hud;
 import com.mat.mariobros.Sprites.Enemies.Enemy;
+import com.mat.mariobros.Sprites.Enemies.FlyingObject;
 import com.mat.mariobros.Sprites.Items.Item;
 import com.mat.mariobros.Sprites.Items.ItemDef;
 import com.mat.mariobros.Sprites.Items.Mushroom;
@@ -162,7 +163,11 @@ public class PlayScreen
             //cam zoom
             if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT)){
                 gamecam.zoom += 0.02f;
+            }
 
+            //cam zoom
+            if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_RIGHT)){
+                gamecam.zoom -= 0.02f;
             }
 
             if (Gdx.input.isKeyJustPressed(Input.Keys.J)){
@@ -267,24 +272,24 @@ public class PlayScreen
     }
 
 
-    private void initPlayerButton() {
-        playerButton = new Button(new Button.ButtonStyle());
-        playerButton.setWidth(460);
-        playerButton.setHeight(360);
-        playerButton.setX(10);
-        playerButton.setY(170);
-        playerButton.setDebug(true);
-
-        stage.addActor(playerButton);
-
-        playerButton.addListener(new ClickListener(){
-
-            @Override
-            public boolean touchDown(InputEvent event, float x, float y,
-                                     int pointer, int button) {
-                System.out.println("click");
-                return super.touchDown(event, x, y, pointer, button);
-            }
-        });
-    }
+//    private void initPlayerButton() {
+//        playerButton = new Button(new Button.ButtonStyle());
+//        playerButton.setWidth(460);
+//        playerButton.setHeight(360);
+//        playerButton.setX(10);
+//        playerButton.setY(170);
+//        playerButton.setDebug(true);
+//
+//        stage.addActor(playerButton);
+//
+//        playerButton.addListener(new ClickListener(){
+//
+//            @Override
+//            public boolean touchDown(InputEvent event, float x, float y,
+//                                     int pointer, int button) {
+//                System.out.println("click");
+//                return super.touchDown(event, x, y, pointer, button);
+//            }
+//        });
+//    }
 }
