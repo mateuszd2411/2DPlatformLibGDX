@@ -91,6 +91,8 @@ public class PlayScreen
 
         randomRotateCam();
 
+        cameraZoomOnPlayer();
+
 
 
 
@@ -109,6 +111,7 @@ public class PlayScreen
     }
 
 
+
 //    if (angle >= 90 && angle <= 180) {
 //
 //// do action
@@ -120,7 +123,7 @@ public class PlayScreen
 
 
     private void randomRotateCam() {
-        System.out.println(Mario.b2body.getPosition());
+//        System.out.println(Mario.b2body.getPosition());
 
 //        MarioBros.manager.get("audio/sounds/stomp.wav", Sound.class).play();
         if (Mario.b2body.getPosition().x > 18 && Mario.b2body.getPosition().x < 24  ||
@@ -159,6 +162,8 @@ public class PlayScreen
 
 
 
+        }else {
+            gamecam.rotate(((float) -Math.atan2(gamecam.up.x, gamecam.up.y) * MathUtils.radiansToDegrees)  );
         }
 
 
@@ -204,6 +209,43 @@ public class PlayScreen
 
     }
 
+
+    private void cameraZoomOnPlayer() {
+
+        if (Mario.b2body.getPosition().x > 79 && Mario.b2body.getPosition().x < 81 &&
+                Mario.b2body.getPosition().y > 1 && Mario.b2body.getPosition().y < 2
+        ){
+
+            gamecam.zoom -=0.008f;
+            if (gamecam.zoom < 0.25f){
+                gamecam.zoom = 0.25f;
+            }
+//            gamecam.zoom +=0.001f;
+//            System.out.println(gamecam.zoom);
+//            gamecam.zoom = 0.2f;
+
+            Timer.schedule(new Timer.Task() {
+                @Override
+                public void run() {
+                    System.out.println("timer run");
+                    MarioBros.manager.get("audio/sounds/stomp.wav", Sound.class).play();
+                    Mario.b2body.setTransform(87,1,0);
+
+                }
+            },2f,0.00001f,1);
+
+
+
+        }else {
+            gamecam.zoom = 1f;
+
+        }
+
+
+    }
+
+
+
     @Override
     public void dispose() {
         this.map.dispose();
@@ -214,7 +256,8 @@ public class PlayScreen
     }
 
     public boolean gameOver() {
-        return this.player.currentState == Mario.State.DEAD && this.player.getStateTimer() > 3.0f;
+        return this.player.currentState == Mario.State.DEAD
+                && this.player.getStateTimer() > 3.0f;
     }
 
     public boolean shake() {
@@ -370,12 +413,14 @@ public class PlayScreen
 
         randomRotateCam();
 
-        if (Hud.worldTimer < 294){
-            //cam to normal state
-//            System.out.println("cam 0");
-            gamecam.rotate(((float) -Math.atan2(gamecam.up.x, gamecam.up.y) * MathUtils.radiansToDegrees)  );
+        cameraZoomOnPlayer();
 
-        }
+//        if (Hud.worldTimer < 294){
+//            //cam to normal state
+////            System.out.println("cam 0");
+//            gamecam.rotate(((float) -Math.atan2(gamecam.up.x, gamecam.up.y) * MathUtils.radiansToDegrees)  );
+//
+//        }
 
 
 

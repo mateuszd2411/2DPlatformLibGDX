@@ -50,7 +50,7 @@ public class Hud implements Disposable{
 
     public Hud(SpriteBatch sb){
         //define our tracking variables
-        worldTimer = 300;
+        worldTimer = 900;
         timeCount = 0;
 //        score = 0;
         prefs = Gdx.app.getPreferences(GAME_PREFS);
