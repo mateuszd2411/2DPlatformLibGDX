@@ -471,10 +471,6 @@
   <object id="1305" x="4401.33" y="20"/>
   <object id="1348" x="3167.82" y="99.8182"/>
   <object id="1417" x="530.667" y="163"/>
-  <object id="1495" x="224.667" y="159.333"/>
-  <object id="1496" x="277.667" y="160"/>
-  <object id="1497" x="310.667" y="159"/>
-  <object id="1498" x="175.333" y="159.333"/>
  </objectgroup>
  <objectgroup id="8" name="Turtles">
   <object id="1296" x="3132.67" y="178"/>

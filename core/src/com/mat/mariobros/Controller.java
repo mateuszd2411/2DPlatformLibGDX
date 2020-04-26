@@ -10,11 +10,13 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mat.mariobros.Sprites.Enemies.FlyingObject;
@@ -212,6 +214,33 @@ public class Controller {
 
     private void initFlyingObjects() {
         System.out.println("con");
+
+        //show random after 2 s
+        Timer.schedule(new Timer.Task() {
+            @Override
+            public void run() {
+
+
+
+                if (MathUtils.randomBoolean()){
+                    System.out.println("1");
+                }else {
+                    System.out.println("2");
+                }
+
+
+            }
+        },2,2);
+
+//        if (MathUtils.randomBoolean()){
+//            System.out.println("con1");
+//
+//        }else {
+//            System.out.println("con2");
+//
+//        }
+
+
         flyingObject1 = new FlyingObject();
         stage.addActor(flyingObject1);
         flyingObject1.flylikeHell();
