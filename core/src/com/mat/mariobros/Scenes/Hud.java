@@ -27,13 +27,13 @@ public class Hud implements Disposable{
     private Viewport viewport;
 
     //Mario score/time Tracking Variables
-    private Integer worldTimer;
+    public static Integer worldTimer;
     private boolean timeUp; // true when the world timer reaches 0
     private float timeCount;
     public static Integer score;
 
     //Scene2D widgets
-    private Label countdownLabel;
+    public static Label countdownLabel;
     public static Label scoreLabel;
     private Label timeLabel;
     private Label levelLabel;
@@ -107,6 +107,7 @@ public class Hud implements Disposable{
                 timeUp = true;
             }
             countdownLabel.setText(String.format("%03d", worldTimer));
+//            System.out.println(countdownLabel);
             timeCount = 0;
         }
     }

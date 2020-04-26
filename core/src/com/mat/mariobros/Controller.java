@@ -223,14 +223,15 @@ public class Controller {
 
 
                 if (MathUtils.randomBoolean()){
-                    System.out.println("1");
+//                    System.out.println("1");
+//                    cam.rotate(10);
                 }else {
-                    System.out.println("2");
+//                    cam.rotate(-10);
                 }
 
 
             }
-        },2,2);
+        },0.1f,0.1f);
 
 //        if (MathUtils.randomBoolean()){
 //            System.out.println("con1");

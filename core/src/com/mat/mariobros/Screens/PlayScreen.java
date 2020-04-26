@@ -13,6 +13,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
@@ -87,6 +88,10 @@ public class PlayScreen
 //        this.stage = new Stage(new StretchViewport(MarioBros.V_HEIGHT,MarioBros.V_HEIGHT,gamecam));
 //        initPlayerButton();
 
+        randomRotateCam();
+
+
+
 
 
 
@@ -102,6 +107,94 @@ public class PlayScreen
 
     }
 
+
+//    if (angle >= 90 && angle <= 180) {
+//
+//// do action
+//    }
+//
+
+
+    private void randomRotateCam() {
+
+        if (Hud.worldTimer >= 290 && Hud.worldTimer < 298){
+            System.out.println("shake");
+
+            //show random after 20 s
+            //earthquake after 20 s
+            Timer.schedule(new Timer.Task() {
+                @Override
+                public void run() {
+
+                    if (Hud.worldTimer >= 294 && Hud.worldTimer <= 298){
+                        if (MathUtils.randomBoolean()){
+                            System.out.println("hake a");
+                            gamecam.rotate(0.2f);
+                            gamecam.rotate(-0.1f);
+                        }else {
+//                    gamecam.rotate(-10);
+                            gamecam.rotate(-0.2f);
+                            gamecam.rotate(0.1f);
+                        }
+                        gamecam.rotate(0);
+                    }
+
+
+
+
+
+
+                }
+            },1.f,0.1f);
+
+
+
+
+        }
+
+
+//        if (Hud.worldTimer < 298){
+//            System.out.println("shake");
+//
+//            //show random after 20 s
+//            //earthquake after 20 s
+//            Timer.schedule(new Timer.Task() {
+//                @Override
+//                public void run() {
+//
+//
+//
+//                    if (MathUtils.randomBoolean()){
+//                        System.out.println("hake a");
+//                        gamecam.rotate(0.2f);
+//                        gamecam.rotate(-0.1f);
+//                    }else {
+////                    gamecam.rotate(-10);
+//                        gamecam.rotate(-0.2f);
+//                        gamecam.rotate(0.1f);
+//                    }
+//                    gamecam.rotate(0);
+//
+//
+//
+//                }
+//            },1.f,0.1f);
+//
+//
+//            if (Hud.worldTimer < 295){
+//                System.out.println("after 295");
+//                gamecam.rotate(0);
+//            }
+//
+//        }
+
+
+
+
+
+
+    }
+
     @Override
     public void dispose() {
         this.map.dispose();
@@ -113,6 +206,11 @@ public class PlayScreen
 
     public boolean gameOver() {
         return this.player.currentState == Mario.State.DEAD && this.player.getStateTimer() > 3.0f;
+    }
+
+    public boolean shake() {
+
+        return  true && this.player.getStateTimer() > 1.0f;
     }
 
     public TextureAtlas getAtlas() {
@@ -260,6 +358,15 @@ public class PlayScreen
         }
         this.gamecam.update();
         this.renderer.setView(this.gamecam);
+
+        randomRotateCam();
+
+        if (Hud.worldTimer < 294){
+            //cam to normal state
+            System.out.println("cam 0");
+            gamecam.rotate(((float) -Math.atan2(gamecam.up.x, gamecam.up.y) * MathUtils.radiansToDegrees)  );
+
+        }
 
 
 
