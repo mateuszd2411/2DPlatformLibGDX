@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -119,9 +120,13 @@ public class PlayScreen
 
 
     private void randomRotateCam() {
-//        System.out.println(Mario.b2body.getPosition());
+        System.out.println(Mario.b2body.getPosition());
 
-        if (Mario.b2body.getPosition().x > 18 && Mario.b2body.getPosition().x < 24){
+//        MarioBros.manager.get("audio/sounds/stomp.wav", Sound.class).play();
+        if (Mario.b2body.getPosition().x > 18 && Mario.b2body.getPosition().x < 24  ||
+                Mario.b2body.getPosition().x > 62 && Mario.b2body.getPosition().x < 67
+
+        ){
 
             //show random after 20 s
             //earthquake after 20 s
@@ -129,7 +134,8 @@ public class PlayScreen
                 @Override
                 public void run() {
 
-                    if (Mario.b2body.getPosition().x > 18 && Mario.b2body.getPosition().x < 24){
+                    if (Mario.b2body.getPosition().x > 18 && Mario.b2body.getPosition().x < 24  ||
+                            Mario.b2body.getPosition().x > 62 && Mario.b2body.getPosition().x < 67){
                         if (MathUtils.randomBoolean()){
 //                            System.out.println("hake a");
                             gamecam.rotate(0.2f);
