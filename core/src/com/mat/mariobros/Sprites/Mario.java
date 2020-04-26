@@ -32,8 +32,8 @@ public class Mario extends Sprite {
     public State currentState;
     public State previousState;
 
-    public World world;
-    public Body b2body;
+    public static World world;
+    public static Body b2body;
 
     private TextureRegion marioStand;
     private Animation marioRun;
@@ -55,6 +55,8 @@ public class Mario extends Sprite {
 
     private Array<FireBall> fireballs;
     private Array<Bomb> bombs;
+
+    public static BodyDef bdef;
 
     public Mario(PlayScreen screen){
         //initialize default values
@@ -388,10 +390,11 @@ public class Mario extends Sprite {
     }
 
     public void defineMario(){
-        BodyDef bdef = new BodyDef();
+
+        bdef = new BodyDef();
 
         Gdx.gl.glClearColor(.0f, 0.0f, 0.f, 1.0f);
-        bdef.position.set(40 / MarioBros.PPM, 40 / MarioBros.PPM);            ////// bdef.position.set(604 / MarioBros.PPM, 115 / MarioBros.PPM);
+        bdef.position.set(1500 / MarioBros.PPM, 40 / MarioBros.PPM);            ////// bdef.position.set(604 / MarioBros.PPM, 115 / MarioBros.PPM);
         bdef.type = BodyDef.BodyType.DynamicBody;
         b2body = world.createBody(bdef);
 

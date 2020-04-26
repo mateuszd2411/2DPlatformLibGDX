@@ -114,11 +114,14 @@ public class PlayScreen
 //    }
 //
 
+// if (Hud.worldTimer >= 290 && Hud.worldTimer < 298){
+    //Mario.bdef.position.x > 0.5f && Mario.bdef.position.x < 0.6f
+
 
     private void randomRotateCam() {
+        System.out.println(Mario.b2body.getPosition());
 
-        if (Hud.worldTimer >= 290 && Hud.worldTimer < 298){
-            System.out.println("shake");
+        if (Mario.b2body.getPosition().x > 18 && Mario.b2body.getPosition().x < 24){
 
             //show random after 20 s
             //earthquake after 20 s
@@ -126,9 +129,9 @@ public class PlayScreen
                 @Override
                 public void run() {
 
-                    if (Hud.worldTimer >= 294 && Hud.worldTimer <= 298){
+                    if (Mario.b2body.getPosition().x > 18 && Mario.b2body.getPosition().x < 24){
                         if (MathUtils.randomBoolean()){
-                            System.out.println("hake a");
+//                            System.out.println("hake a");
                             gamecam.rotate(0.2f);
                             gamecam.rotate(-0.1f);
                         }else {
@@ -363,7 +366,7 @@ public class PlayScreen
 
         if (Hud.worldTimer < 294){
             //cam to normal state
-            System.out.println("cam 0");
+//            System.out.println("cam 0");
             gamecam.rotate(((float) -Math.atan2(gamecam.up.x, gamecam.up.y) * MathUtils.radiansToDegrees)  );
 
         }
