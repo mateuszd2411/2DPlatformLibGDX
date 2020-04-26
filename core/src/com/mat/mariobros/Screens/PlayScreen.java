@@ -119,7 +119,7 @@ public class PlayScreen
 
 
     private void randomRotateCam() {
-        System.out.println(Mario.b2body.getPosition());
+//        System.out.println(Mario.b2body.getPosition());
 
         if (Mario.b2body.getPosition().x > 18 && Mario.b2body.getPosition().x < 24){
 

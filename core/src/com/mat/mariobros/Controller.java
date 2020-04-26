@@ -10,16 +10,13 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.mat.mariobros.Sprites.Enemies.FlyingObject;
 
 
 public class Controller {
@@ -28,14 +25,10 @@ public class Controller {
     boolean bombPress,upPressed, firePress, leftPressed, rightPressed;
     OrthographicCamera cam;
 
-    private FlyingObject flyingObject1;
-
     public Controller(){
         cam = new OrthographicCamera();
         viewport = new FitViewport(800, 480, cam);
         stage = new Stage(viewport, MarioBros.batch);
-
-        initFlyingObjects();
 
         stage.addListener(new InputListener(){
 
@@ -102,7 +95,6 @@ public class Controller {
 
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                System.out.println("up pressed");
                 upPressed = false;
             }
         });
@@ -212,41 +204,6 @@ public class Controller {
         stage.addActor(table);
     }
 
-    private void initFlyingObjects() {
-        System.out.println("con");
-
-        //show random after 2 s
-        Timer.schedule(new Timer.Task() {
-            @Override
-            public void run() {
-
-
-
-                if (MathUtils.randomBoolean()){
-//                    System.out.println("1");
-//                    cam.rotate(10);
-                }else {
-//                    cam.rotate(-10);
-                }
-
-
-            }
-        },0.1f,0.1f);
-
-//        if (MathUtils.randomBoolean()){
-//            System.out.println("con1");
-//
-//        }else {
-//            System.out.println("con2");
-//
-//        }
-
-
-        flyingObject1 = new FlyingObject();
-        stage.addActor(flyingObject1);
-        flyingObject1.flylikeHell();
-    }
-
     public void draw(){
         stage.draw();
     }
@@ -279,4 +236,3 @@ public class Controller {
         viewport.update(width, height);
     }
 }
-
