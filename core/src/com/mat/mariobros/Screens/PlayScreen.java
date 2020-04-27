@@ -7,7 +7,6 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Camera;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -16,22 +15,16 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mat.mariobros.MarioBros;
 import com.mat.mariobros.Scenes.Hud;
 import com.mat.mariobros.Sprites.Enemies.Enemy;
-import com.mat.mariobros.Sprites.Enemies.FlyingObject;
 import com.mat.mariobros.Sprites.Items.Item;
 import com.mat.mariobros.Sprites.Items.ItemDef;
 import com.mat.mariobros.Sprites.Items.Mushroom;
@@ -89,7 +82,7 @@ public class PlayScreen
 //        this.stage = new Stage(new StretchViewport(MarioBros.V_HEIGHT,MarioBros.V_HEIGHT,gamecam));
 //        initPlayerButton();
 
-        randomRotateCam();
+        randomRotateAndZoomCam();
 
         cameraZoomOnPlayer();
 
@@ -122,7 +115,7 @@ public class PlayScreen
     //Mario.bdef.position.x > 0.5f && Mario.bdef.position.x < 0.6f
 
 
-    private void randomRotateCam() {
+    private void randomRotateAndZoomCam() {
 //        System.out.println(Mario.b2body.getPosition());
 
 
@@ -145,6 +138,10 @@ public class PlayScreen
 //                            System.out.println("hake a");
                             gamecam.rotate(0.2f);
                             gamecam.rotate(-0.1f);
+                            gamecam.zoom -=0.005f;
+                            if (gamecam.zoom < 0.7f){
+                                gamecam.zoom = 0.7f;
+                            }
                         }else {
 //                    gamecam.rotate(-10);
                             gamecam.rotate(-0.2f);
@@ -413,7 +410,7 @@ public class PlayScreen
         this.gamecam.update();
         this.renderer.setView(this.gamecam);
 
-        randomRotateCam();
+        randomRotateAndZoomCam();
 
         cameraZoomOnPlayer();
 
