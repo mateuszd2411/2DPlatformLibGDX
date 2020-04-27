@@ -394,7 +394,7 @@ public class Mario extends Sprite {
         bdef = new BodyDef();
 
         Gdx.gl.glClearColor(.0f, 0.0f, 0.f, 1.0f);
-        bdef.position.set(4700 / MarioBros.PPM, 40 / MarioBros.PPM);            ////// bdef.position.set(604 / MarioBros.PPM, 115 / MarioBros.PPM);
+        bdef.position.set(40 / MarioBros.PPM, 40 / MarioBros.PPM);            ////// bdef.position.set(604 / MarioBros.PPM, 115 / MarioBros.PPM);
         bdef.type = BodyDef.BodyType.DynamicBody;
         b2body = world.createBody(bdef);
 
@@ -409,40 +409,6 @@ public class Mario extends Sprite {
                 MarioBros.OBJECT_BIT |
                 MarioBros.ENEMY_HEAD_BIT |
                 MarioBros.ITEM_BIT;
-
-
-//        if (FlyingObject.touch = false){
-//            fdef.filter.maskBits = MarioBros.GROUND_BIT |
-//                    MarioBros.COIN_BIT |
-//                    MarioBros.BRICK_BIT |
-////                    MarioBros.ENEMY_BIT |
-//                    MarioBros.OBJECT_BIT |
-//                    MarioBros.ENEMY_HEAD_BIT |
-//                    MarioBros.ITEM_BIT;
-//        }
-
-//        if (FlyingObject.touch = true){
-//
-//
-//            Timer.schedule(new Timer.Task(){
-//                @Override
-//                public void run() {
-//                    // Do something
-//                    System.out.println("sek");
-//
-//                    fdef.filter.maskBits = MarioBros.GROUND_BIT |
-//                            MarioBros.COIN_BIT |
-//                            MarioBros.BRICK_BIT |
-////                            MarioBros.ENEMY_BIT |
-//                            MarioBros.OBJECT_BIT |
-//                            MarioBros.ENEMY_HEAD_BIT |
-//                            MarioBros.ITEM_BIT;
-//
-//                }
-//            }, 10);
-//
-//
-//        }
 
         fdef.shape = shape;
         b2body.createFixture(fdef).setUserData(this);
@@ -483,3 +449,37 @@ public class Mario extends Sprite {
         ///bomb
     }
 }
+
+
+//if (FlyingObject.touch = false){
+//            fdef.filter.maskBits = MarioBros.GROUND_BIT |
+//                    MarioBros.COIN_BIT |
+//                    MarioBros.BRICK_BIT |
+////                    MarioBros.ENEMY_BIT |
+//                    MarioBros.OBJECT_BIT |
+//                    MarioBros.ENEMY_HEAD_BIT |
+//                    MarioBros.ITEM_BIT;
+//        }
+
+//        if (FlyingObject.touch = true){
+//
+//
+//            Timer.schedule(new Timer.Task(){
+//                @Override
+//                public void run() {
+//                    // Do something
+//                    System.out.println("sek");
+//
+//                    fdef.filter.maskBits = MarioBros.GROUND_BIT |
+//                            MarioBros.COIN_BIT |
+//                            MarioBros.BRICK_BIT |
+////                            MarioBros.ENEMY_BIT |
+//                            MarioBros.OBJECT_BIT |
+//                            MarioBros.ENEMY_HEAD_BIT |
+//                            MarioBros.ITEM_BIT;
+//
+//                }
+//            }, 10);
+//
+//
+//        }

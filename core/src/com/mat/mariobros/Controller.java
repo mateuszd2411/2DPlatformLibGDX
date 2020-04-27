@@ -17,6 +17,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.mat.mariobros.Screens.BasicDialog;
+import com.mat.mariobros.Sprites.Mario;
 
 
 public class Controller {
@@ -29,6 +31,8 @@ public class Controller {
         cam = new OrthographicCamera();
         viewport = new FitViewport(800, 480, cam);
         stage = new Stage(viewport, MarioBros.batch);
+
+        basicDialogShow();
 
         stage.addListener(new InputListener(){
 
@@ -203,6 +207,20 @@ public class Controller {
 
         stage.addActor(table);
     }
+
+    private void basicDialogShow() {
+        System.out.println(Mario.b2body.getPosition());
+
+            BasicDialog basicDialog = new BasicDialog();
+            stage.addActor(basicDialog);
+            basicDialog.initContent("Start game ");
+
+
+
+
+    }
+
+
 
     public void draw(){
         stage.draw();

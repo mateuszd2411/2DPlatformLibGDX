@@ -125,6 +125,8 @@ public class PlayScreen
     private void randomRotateCam() {
 //        System.out.println(Mario.b2body.getPosition());
 
+
+
 //        MarioBros.manager.get("audio/sounds/stomp.wav", Sound.class).play();
         if (Mario.b2body.getPosition().x > 18 && Mario.b2body.getPosition().x < 24  ||
                 Mario.b2body.getPosition().x > 62 && Mario.b2body.getPosition().x < 67
