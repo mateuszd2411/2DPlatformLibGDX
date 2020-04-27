@@ -221,7 +221,20 @@ public class Mario extends Sprite {
         else if(runGrowAnimation)
             return State.GROWING;
         else if((b2body.getLinearVelocity().y > 0 && currentState == State.JUMPING) || (b2body.getLinearVelocity().y < 0 && previousState == State.JUMPING)){
-            MarioBros.manager.get("audio/sounds/mee.mp3", Music.class).play();
+
+            int randomNumber = MathUtils.random(1,50);
+            System.out.println(randomNumber);
+            switch (randomNumber){
+                case 1:
+                    MarioBros.manager.get("audio/sounds/mee.mp3", Music.class).play();
+                    System.out.println("1");
+                    break;
+
+                    default:
+                        break;
+
+            }
+
             return State.JUMPING;
         }
             //if negative in Y-Axis mario is falling
