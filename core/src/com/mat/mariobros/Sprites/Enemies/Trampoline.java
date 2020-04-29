@@ -11,19 +11,15 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.utils.Array;
 import com.mat.mariobros.MarioBros;
-import com.mat.mariobros.Scenes.Hud;
 import com.mat.mariobros.Screens.PlayScreen;
 import com.mat.mariobros.Sprites.Mario;
 import com.mat.mariobros.Sprites.Other.Bomb;
 import com.mat.mariobros.Sprites.Other.FireBall;
 
 public class Trampoline extends Enemy {
-
     private float stateTime;
     private Animation walkAnimation;
     private Array<TextureRegion> frames;
-
-
 
     public Trampoline(PlayScreen screen, float x, float y) {
         super(screen, x, y);
@@ -33,8 +29,6 @@ public class Trampoline extends Enemy {
         walkAnimation = new Animation(0.5f, frames);
         stateTime = 0;
         setBounds(getX(), getY(), 70/ MarioBros.PPM,16 / MarioBros.PPM);
-
-
     }
 
     public void update(float dt){
@@ -42,12 +36,10 @@ public class Trampoline extends Enemy {
             b2body.setLinearVelocity(velocity);
             setPosition(b2body.getPosition().x - getWidth() / 2, b2body.getPosition().y - getHeight() / 2);
             setRegion((TextureRegion) walkAnimation.getKeyFrame(stateTime, true));
-
     }
 
     @Override
     protected void defineEnemy() {
-
         BodyDef bdef = new BodyDef();
         bdef.position.set(getX(), getY());
         bdef.type = BodyDef.BodyType.StaticBody;
@@ -55,7 +47,7 @@ public class Trampoline extends Enemy {
 
         FixtureDef fdef = new FixtureDef();
         CircleShape shape = new CircleShape();
-        shape.setRadius(0.1f/ MarioBros.PPM);              //////////radio
+        shape.setRadius(0.1f/ MarioBros.PPM);
         fdef.filter.categoryBits = MarioBros.ENEMY_BIT;
         fdef.filter.maskBits = MarioBros.GROUND_BIT |
                 MarioBros.COIN_BIT |
@@ -82,14 +74,10 @@ public class Trampoline extends Enemy {
         fdef.restitution = 1.2f;
         fdef.filter.categoryBits = MarioBros.ENEMY_HEAD_BIT;
         b2body.createFixture(fdef).setUserData(this);
-
-
     }
 
     public void draw(Batch batch){
-
-            super.draw(batch);
-
+        super.draw(batch);
     }
 
     public void hitByEnemy(Enemy enemy){
@@ -98,7 +86,6 @@ public class Trampoline extends Enemy {
 
     @Override
     public void flamed(FireBall fireball) {
-
 
     }
 
@@ -109,9 +96,6 @@ public class Trampoline extends Enemy {
 
     @Override
     public void hitOnHead(Mario mario) {
-
-
         MarioBros.manager.get("audio/sounds/stomp.wav", Sound.class).play();
-
     }
 }

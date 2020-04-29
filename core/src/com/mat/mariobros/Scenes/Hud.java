@@ -6,22 +6,17 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mat.mariobros.MarioBros;
-import com.mat.mariobros.Sprites.Enemies.FlyingObject;
 
 
 public class Hud implements Disposable{
-
     //Scene2D.ui Stage and its own Viewport for HUD
     public static Stage stage;
     private Viewport viewport;
@@ -52,18 +47,13 @@ public class Hud implements Disposable{
         //define our tracking variables
         worldTimer = 900;
         timeCount = 0;
-//        score = 0;
         prefs = Gdx.app.getPreferences(GAME_PREFS);
         score = prefs.getInteger(GAME_SCORE);
-//        score = MarioBros.prefs.getInteger(GAME_SCORE);
-
 
         //setup the HUD viewport using a new camera seperate from our gamecam
         //define our stage using that viewport and our games spritebatch
         viewport = new FitViewport(MarioBros.V_WIDTH, MarioBros.V_HEIGHT, new OrthographicCamera());
         stage = new Stage(viewport, sb);
-
-//        initResetScoreButton();
 
         //define a table used to organize our hud's labels
         Table table = new Table();
@@ -92,10 +82,6 @@ public class Hud implements Disposable{
 
         //add our table to the stage
         stage.addActor(table);
-
-
-
-
     }
 
     public void update(float dt){
@@ -107,7 +93,6 @@ public class Hud implements Disposable{
                 timeUp = true;
             }
             countdownLabel.setText(String.format("%03d", worldTimer));
-//            System.out.println(countdownLabel);
             timeCount = 0;
         }
     }
@@ -119,8 +104,6 @@ public class Hud implements Disposable{
         prefs.flush();
     }
 
-
-
     public boolean isTimeUp() { return timeUp; }
 
     public static void resetGameScore() {
@@ -129,22 +112,6 @@ public class Hud implements Disposable{
         prefs.putInteger(GAME_SCORE,score);
         prefs.flush();
     }
-
-//    public static void initResetScoreButton() {
-//        System.out.println("button");
-//
-//
-//        resetScoreButton = new Button(new Button.ButtonStyle());
-//        resetScoreButton.setWidth(30);
-//        resetScoreButton.setHeight(30);
-//        resetScoreButton.setX(150);
-//        resetScoreButton.setY(170);
-//        resetScoreButton.setDebug(true);
-//
-//        stage.addActor(resetScoreButton);
-//
-//    }
-
 
     @Override
     public void dispose() { stage.dispose(); }

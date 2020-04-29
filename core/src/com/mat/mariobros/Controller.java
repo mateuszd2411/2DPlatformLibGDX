@@ -1,10 +1,4 @@
-package com.mat.mariobros;/*
- * Decompiled with CFR 0.0.
- *
- * Could not load the following classes:
- *
- */
-
+package com.mat.mariobros;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -19,7 +13,6 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mat.mariobros.Screens.BasicDialog;
 import com.mat.mariobros.Sprites.Mario;
-
 
 public class Controller {
     Viewport viewport;
@@ -54,7 +47,6 @@ public class Controller {
                     case Input.Keys.RIGHT:
                         rightPressed = true;
                         break;
-
                 }
                 return true;
             }
@@ -85,8 +77,6 @@ public class Controller {
         Gdx.input.setInputProcessor(stage);
 
         Table table = new Table();
-//        table.left().bottom();
-
         Image upImg = new Image(new Texture("flatDark25.png"));
         upImg.setSize(90, 110);
         upImg.addListener(new InputListener() {
@@ -104,7 +94,6 @@ public class Controller {
         });
 
         ///fire IMG
-
         Image downImg = new Image(new Texture("flatDark26.png"));
         downImg.setSize(90, 90);
         downImg.addListener(new InputListener() {
@@ -120,11 +109,9 @@ public class Controller {
                 firePress = false;
             }
         });
-
         //fire IMG
 
         ///bomb IMG
-
         Image bombImg = new Image(new Texture("bomb.png"));
         bombImg.setSize(90, 90);
         bombImg.addListener(new InputListener() {
@@ -140,7 +127,6 @@ public class Controller {
                 bombPress = false;
             }
         });
-
         //bomb IMG
 
         Image rightImg = new Image(new Texture("flatDark24.png"));
@@ -175,13 +161,9 @@ public class Controller {
             }
         });
 
-
-
         ///bobm IMG
         table.add();
-//        table.pad(15, 1, 50, 15);
         table.add(bombImg).padBottom(500).size(bombImg.getWidth(), bombImg.getHeight());
-//        table.pad(15, 1, 50, 15);
         ///bobm IMG
 
         table.add();
@@ -192,7 +174,6 @@ public class Controller {
         table.pad(15, 1, 50, 15);
         table.add(rightImg).size(rightImg.getWidth(), rightImg.getHeight());
 
-
         table.add().pad(15, 15, 50, 340);
         table.left().padBottom(80).add(upImg).size(upImg.getWidth(), upImg.getHeight());
         table.add();
@@ -202,7 +183,6 @@ public class Controller {
 
         table.row().padBottom(15);
         table.add();
-//        table.add(downImg).size(downImg.getWidth(), downImg.getHeight());
         table.add();
 
         stage.addActor(table);
@@ -214,13 +194,7 @@ public class Controller {
             BasicDialog basicDialog = new BasicDialog();
             stage.addActor(basicDialog);
             basicDialog.initContent("Start game ");
-
-
-
-
     }
-
-
 
     public void draw(){
         stage.draw();
@@ -235,11 +209,9 @@ public class Controller {
     }
 
     //bomb
-
     public boolean isBombPress() {
         return bombPress;
     }
-
     //bomb
 
     public boolean isLeftPressed() {

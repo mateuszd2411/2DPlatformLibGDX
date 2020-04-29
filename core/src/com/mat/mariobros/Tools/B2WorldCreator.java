@@ -56,10 +56,7 @@ public class B2WorldCreator {
             shape.setAsBox(rect.getWidth() / 2/ MarioBros.PPM, rect.getHeight() / 2/ MarioBros.PPM);
             fdef.shape = shape;
             body.createFixture(fdef);
-
-
         }
-
 
         for (MapObject object : map.getLayers().get(3).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
@@ -73,22 +70,16 @@ public class B2WorldCreator {
             fdef.shape = shape;
             fdef.filter.categoryBits = MarioBros.OBJECT_BIT;
             body.createFixture(fdef);
-
-
         }
 
         for (MapObject object : map.getLayers().get(5).getObjects().getByType(RectangleMapObject.class)){
-
             new Brick(screen, object);
         }
-
-
         //create coin bodies
         for (MapObject object : map.getLayers().get(4).getObjects().getByType(RectangleMapObject.class)){
 
            new Coin(screen, object);
         }
-
         //create goombas
         goombas = new Array<Goomba>();
         for (MapObject object : map.getLayers().get(6).getObjects().getByType(RectangleMapObject.class)){
@@ -101,141 +92,94 @@ public class B2WorldCreator {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
             turtles.add(new Turtle(screen, rect.getX() / MarioBros.PPM, rect.getY() / MarioBros.PPM));
         }
-
-
         ///create Dogs
-
         dogs = new Array<Dog>();
         for (MapObject object : map.getLayers().get(8).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
             dogs.add(new Dog(screen, rect.getX() / MarioBros.PPM, rect.getY() / MarioBros.PPM));
         }
-
         ///create Dogs
 
         ///create fire
-
         fires = new Array<Fire>();
         for (MapObject object : map.getLayers().get(9).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
             fires.add(new Fire(screen, rect.getX() / MarioBros.PPM, rect.getY() / MarioBros.PPM));
         }
-
         ///create fire
 
         ///create trampoline
-
         trampolines = new Array<Trampoline>();
         for (MapObject object : map.getLayers().get(10).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
             trampolines.add(new Trampoline(screen, rect.getX() / MarioBros.PPM, rect.getY() / MarioBros.PPM));
         }
-
         ///create trampoline
 
-
         ///create fireRain
-
         fireRains = new Array<FireRain>();
         for (MapObject object : map.getLayers().get(11).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
             fireRains.add(new FireRain(screen, rect.getX() / MarioBros.PPM, rect.getY() / MarioBros.PPM));
         }
-
         ///create fireRain
 
         ///create MonsterMouths
-
         monsterMouths = new Array<MonsterMouths>();
         for (MapObject object : map.getLayers().get(12).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
             monsterMouths.add(new MonsterMouths(screen, rect.getX() / MarioBros.PPM, rect.getY() / MarioBros.PPM));
         }
-
         ///create MonsterMouths
 
-
         ///create Raft
-
         rafts = new Array<Raft>();
         for (MapObject object : map.getLayers().get(13).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
             rafts.add(new Raft(screen, rect.getX() / MarioBros.PPM, rect.getY() / MarioBros.PPM));
         }
-
         ///create Raft
 
         ///create Par
-
         pars = new Array<Par>();
         for (MapObject object : map.getLayers().get(14).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
             pars.add(new Par(screen, rect.getX() / MarioBros.PPM, rect.getY() / MarioBros.PPM));
         }
-
         ///create Par
-
     }
 
     public Array<Goomba> getGoombas() {
         return goombas;
     }
 
-    ///dogs
-
     public Array<Dog> getDogs() {
         return dogs;
     }
-
-    ///dogs
-
-    ///fire
 
     public Array<Fire> getFires() {
         return fires;
     }
 
-    ///fire
-
-    ///trampoline
-
     public Array<Trampoline> getTrampolines() {
         return trampolines;
     }
-
-    ///trampoline
-
-    ///fireRain
 
     public Array<FireRain> getFireRains() {
         return fireRains;
     }
 
-    ///fireRain
-
-    ///MonsterMouths
-
     public Array<MonsterMouths> getMonsterMouths() {
         return monsterMouths;
     }
-
-    ///MonsterMouths
-
-    ///Raft
 
     public Array<Raft> getRafts() {
         return rafts;
     }
 
-    ///Raft
-
-    ///Par
-
     public Array<Par> getPars() {
         return pars;
     }
-
-    ///Par
 
     public Array<Enemy> getEnemies(){
         Array<Enemy> enemies = new Array<Enemy>();

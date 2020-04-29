@@ -32,8 +32,6 @@ public class Mushroom extends Item {
                 MarioBros.COIN_BIT |
                 MarioBros.BRICK_BIT;
 
-
-
         fdef.shape = shape;
         body.createFixture(fdef).setUserData(this);
     }

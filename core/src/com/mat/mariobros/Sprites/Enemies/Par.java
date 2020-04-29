@@ -1,9 +1,7 @@
 package com.mat.mariobros.Sprites.Enemies;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.Animation;
-
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
@@ -21,27 +19,22 @@ import com.mat.mariobros.Sprites.Other.Bomb;
 import com.mat.mariobros.Sprites.Other.FireBall;
 
 public class Par extends Enemy {
-
     private float stateTime;
     private Animation walkAnimation;
     private Array<TextureRegion> frames;
     private boolean setToDestroy;
     private boolean destroyed;
 
-
     public Par(PlayScreen screen, float x, float y) {
         super(screen, x, y);
         frames = new Array<TextureRegion>();
         for (int i = 0; i < 7; i++)
-//            frames.add(new TextureRegion(screen.getAtlas().findRegion("goomba"), i * 16,0,16,16));
-            frames.add(new TextureRegion(screen.getAtlas().findRegion("par"), i * 60,0,60,60));
+        frames.add(new TextureRegion(screen.getAtlas().findRegion("par"), i * 60,0,60,60));
         walkAnimation = new Animation(0.2f, frames);
         stateTime = 0;
         setBounds(getX(), getY(), 120/ MarioBros.PPM,120 / MarioBros.PPM);
         setToDestroy = false;
         destroyed = false;
-//        angle = 0;
-
     }
 
     public void update(float dt){
@@ -62,7 +55,6 @@ public class Par extends Enemy {
 
     @Override
     protected void defineEnemy() {
-
         BodyDef bdef = new BodyDef();
         bdef.position.set(getX(), getY());
         bdef.type = BodyDef.BodyType.StaticBody;
@@ -96,26 +88,20 @@ public class Par extends Enemy {
         fdef.restitution = 0.5f;
         fdef.filter.categoryBits = MarioBros.ENEMY_HEAD_BIT;
         b2body.createFixture(fdef).setUserData(this);
-
-
     }
 
     public void draw(Batch batch){
         if (!destroyed || stateTime <5)
             super.draw(batch);
-
     }
 
     public void hitByEnemy(Enemy enemy){
         System.out.println(MathUtils.random(100));
         if (MathUtils.random(100) > 5){
-
-                setToDestroy = true;
-
+            setToDestroy = true;
         }
         else
             reverseVelocity(true, false);
-
     }
 
     @Override
@@ -125,7 +111,6 @@ public class Par extends Enemy {
             setToDestroy = true;
             Hud.addScore(10);
         }
-
         fireball.setToDestroy();
     }
 
@@ -143,7 +128,5 @@ public class Par extends Enemy {
             setToDestroy = true;
             MarioBros.manager.get("audio/sounds/par.mp3", Sound.class).play();
         }
-
-
     }
 }

@@ -1,13 +1,10 @@
 package com.mat.mariobros.Sprites.Enemies;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.CircleShape;
-import com.badlogic.gdx.physics.box2d.Filter;
-import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.utils.Array;
@@ -40,9 +37,7 @@ public class Turtle extends Enemy {
         shell = new TextureRegion(screen.getAtlas().findRegion("turtle"), 64, 0, 16, 24);
         walkAnimation = new Animation(0.2f, frames);
         currentState = previousState = State.WALKING;
-
         setBounds(getX(), getY(), 16 / MarioBros.PPM, 24 / MarioBros.PPM);
-
     }
 
     @Override
@@ -115,9 +110,7 @@ public class Turtle extends Enemy {
         if(currentState == State.STANDING_SHELL && stateTime > 5){
             currentState = State.WALKING;
             velocity.x = 1;
-            System.out.println("WAKE UP SHELL");
         }
-
         setPosition(b2body.getPosition().x - getWidth() / 2, b2body.getPosition().y - 8 /MarioBros.PPM);
         b2body.setLinearVelocity(velocity);
     }
@@ -130,7 +123,6 @@ public class Turtle extends Enemy {
             else
                 velocity.x = 2;
             currentState = State.MOVING_SHELL;
-            System.out.println("Set to moving shell");
         }
         else {
             currentState = State.STANDING_SHELL;

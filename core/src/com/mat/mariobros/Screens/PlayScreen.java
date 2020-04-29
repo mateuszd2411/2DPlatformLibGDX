@@ -35,7 +35,6 @@ import com.mat.mariobros.Tools.WorldContactListener;
 import java.util.Iterator;
 import java.util.concurrent.LinkedBlockingQueue;
 
-
 public class PlayScreen
     extends Stage
         implements Screen {
@@ -55,9 +54,6 @@ public class PlayScreen
     private Mario player;
     private OrthogonalTiledMapRenderer renderer;
     private World world;
-    private float timeHelper;
-    private Button playerButton;
-    protected Stage stage;
 
     public PlayScreen(MarioBros marioBros) {
         this.game = marioBros;
@@ -79,53 +75,15 @@ public class PlayScreen
         this.music.play();
         this.items = new Array();
         this.itemsToSpawn = new LinkedBlockingQueue();
-//        this.stage = new Stage(new StretchViewport(MarioBros.V_HEIGHT,MarioBros.V_HEIGHT,gamecam));
-//        initPlayerButton();
 
         randomRotateAndZoomCam();
-
         cameraZoomOnPlayer();
-
-
-
-
-
-
-
-//        after 1 s
-//        Timer.schedule(new Timer.Task() {
-//            @Override
-//            public void run() {
-//                System.out.println("11");
-//                gamecam.rotate(10);
-//            }
-//        },1);
-
     }
 
-
-
-//    if (angle >= 90 && angle <= 180) {
-//
-//// do action
-//    }
-//
-
-// if (Hud.worldTimer >= 290 && Hud.worldTimer < 298){
-    //Mario.bdef.position.x > 0.5f && Mario.bdef.position.x < 0.6f
-
-
     private void randomRotateAndZoomCam() {
-//        System.out.println(Mario.b2body.getPosition());
-
-
-
-//        MarioBros.manager.get("audio/sounds/stomp.wav", Sound.class).play();
         if (Mario.b2body.getPosition().x > 18 && Mario.b2body.getPosition().x < 24  ||
                 Mario.b2body.getPosition().x > 62 && Mario.b2body.getPosition().x < 67
-
         ){
-
             //show random after 20 s
             //earthquake after 20 s
             Timer.schedule(new Timer.Task() {
@@ -135,7 +93,6 @@ public class PlayScreen
                     if (Mario.b2body.getPosition().x > 18 && Mario.b2body.getPosition().x < 24  ||
                             Mario.b2body.getPosition().x > 62 && Mario.b2body.getPosition().x < 67){
                         if (MathUtils.randomBoolean()){
-//                            System.out.println("hake a");
                             gamecam.rotate(0.2f);
                             gamecam.rotate(-0.1f);
                             gamecam.zoom -=0.005f;
@@ -143,86 +100,26 @@ public class PlayScreen
                                 gamecam.zoom = 0.7f;
                             }
                         }else {
-//                    gamecam.rotate(-10);
                             gamecam.rotate(-0.2f);
                             gamecam.rotate(0.1f);
                         }
                         gamecam.rotate(0);
                     }
-
-
-
-
-
-
                 }
             },1.f,0.1f);
-
-
-
-
         }else {
             gamecam.rotate(((float) -Math.atan2(gamecam.up.x, gamecam.up.y) * MathUtils.radiansToDegrees)  );
         }
-
-
-//        if (Hud.worldTimer < 298){
-//            System.out.println("shake");
-//
-//            //show random after 20 s
-//            //earthquake after 20 s
-//            Timer.schedule(new Timer.Task() {
-//                @Override
-//                public void run() {
-//
-//
-//
-//                    if (MathUtils.randomBoolean()){
-//                        System.out.println("hake a");
-//                        gamecam.rotate(0.2f);
-//                        gamecam.rotate(-0.1f);
-//                    }else {
-////                    gamecam.rotate(-10);
-//                        gamecam.rotate(-0.2f);
-//                        gamecam.rotate(0.1f);
-//                    }
-//                    gamecam.rotate(0);
-//
-//
-//
-//                }
-//            },1.f,0.1f);
-//
-//
-//            if (Hud.worldTimer < 295){
-//                System.out.println("after 295");
-//                gamecam.rotate(0);
-//            }
-//
-//        }
-
-
-
-
-
-
     }
 
-
     private void cameraZoomOnPlayer() {
-
         if (Mario.b2body.getPosition().x > 79 && Mario.b2body.getPosition().x < 81 &&
                 Mario.b2body.getPosition().y > 1 && Mario.b2body.getPosition().y < 2
         ){
-
             gamecam.zoom -=0.008f;
             if (gamecam.zoom < 0.25f){
                 gamecam.zoom = 0.25f;
             }
-//            gamecam.zoom +=0.001f;
-//            System.out.println(gamecam.zoom);
-//            gamecam.zoom = 0.2f;
-
             Timer.schedule(new Timer.Task() {
                 @Override
                 public void run() {
@@ -232,18 +129,10 @@ public class PlayScreen
 
                 }
             },2f,0.00001f,1);
-
-
-
         }else {
             gamecam.zoom = 1f;
-
         }
-
-
     }
-
-
 
     @Override
     public void dispose() {
@@ -280,9 +169,7 @@ public class PlayScreen
         return this.world;
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
+//    Enabled aggressive block sorting
     public void handleInput(float f) {
         if (this.player.currentState != Mario.State.DEAD) {
             if (MarioBros.controller.isUpPressed()) {
@@ -318,14 +205,14 @@ public class PlayScreen
             if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_RIGHT)){
                 gamecam.zoom -= 0.02f;
             }
+            //cam zoom
 
+            //delete score
             if (Gdx.input.isKeyJustPressed(Input.Keys.J)){
-//                Hud.score = 0;
                 Hud.scoreLabel.setText(String.format("%06d", 0));
                 Hud.resetGameScore();
-
             }
-
+            //delete score
         }
     }
 
@@ -411,45 +298,6 @@ public class PlayScreen
         this.renderer.setView(this.gamecam);
 
         randomRotateAndZoomCam();
-
         cameraZoomOnPlayer();
-
-//        if (Hud.worldTimer < 294){
-//            //cam to normal state
-////            System.out.println("cam 0");
-//            gamecam.rotate(((float) -Math.atan2(gamecam.up.x, gamecam.up.y) * MathUtils.radiansToDegrees)  );
-//
-//        }
-
-
-
-        //rotate camera
-//        timeHelper += Gdx.graphics.getDeltaTime();
-//        if (timeHelper > 8.1f){
-//            gamecam.rotate(0.20f);
-//            timeHelper = 0;
-//            System.out.println(timeHelper);}
     }
-
-
-//    private void initPlayerButton() {
-//        playerButton = new Button(new Button.ButtonStyle());
-//        playerButton.setWidth(460);
-//        playerButton.setHeight(360);
-//        playerButton.setX(10);
-//        playerButton.setY(170);
-//        playerButton.setDebug(true);
-//
-//        stage.addActor(playerButton);
-//
-//        playerButton.addListener(new ClickListener(){
-//
-//            @Override
-//            public boolean touchDown(InputEvent event, float x, float y,
-//                                     int pointer, int button) {
-//                System.out.println("click");
-//                return super.touchDown(event, x, y, pointer, button);
-//            }
-//        });
-//    }
 }

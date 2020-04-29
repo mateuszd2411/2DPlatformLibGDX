@@ -1,6 +1,5 @@
 package com.mat.mariobros.Sprites.Enemies;
 
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -11,19 +10,15 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.utils.Array;
 import com.mat.mariobros.MarioBros;
-import com.mat.mariobros.Scenes.Hud;
 import com.mat.mariobros.Screens.PlayScreen;
 import com.mat.mariobros.Sprites.Mario;
 import com.mat.mariobros.Sprites.Other.Bomb;
 import com.mat.mariobros.Sprites.Other.FireBall;
 
 public class Raft extends Enemy {
-
     private float stateTime;
     private Animation walkAnimation;
     private Array<TextureRegion> frames;
-
-
 
     public Raft(PlayScreen screen, float x, float y) {
         super(screen, x, y);
@@ -33,8 +28,6 @@ public class Raft extends Enemy {
         walkAnimation = new Animation(0.5f, frames);
         stateTime = 0;
         setBounds(getX(), getY(), 120/ MarioBros.PPM,45 / MarioBros.PPM);
-
-
     }
 
     public void update(float dt){
@@ -42,12 +35,10 @@ public class Raft extends Enemy {
         b2body.setLinearVelocity(velocity);
         setPosition(b2body.getPosition().x - getWidth() / 2, b2body.getPosition().y - getHeight() / 2);
         setRegion((TextureRegion) walkAnimation.getKeyFrame(stateTime, true));
-
     }
 
     @Override
     protected void defineEnemy() {
-
         BodyDef bdef = new BodyDef();
         bdef.position.set(getX(), getY());
         bdef.type = BodyDef.BodyType.DynamicBody;
@@ -55,12 +46,11 @@ public class Raft extends Enemy {
 
         FixtureDef fdef = new FixtureDef();
         CircleShape shape = new CircleShape();
-        shape.setRadius(0.1f/ MarioBros.PPM);              //////////radio
+        shape.setRadius(0.1f/ MarioBros.PPM);
         fdef.filter.categoryBits = MarioBros.ENEMY_BIT;
         fdef.filter.maskBits = MarioBros.GROUND_BIT |
                 MarioBros.COIN_BIT |
                 MarioBros.BRICK_BIT |
-//                MarioBros.ENEMY_BIT |
                 MarioBros.OBJECT_BIT|
                 MarioBros.MARIO_BIT|
                 MarioBros.FIREBALL_BIT|
@@ -82,8 +72,6 @@ public class Raft extends Enemy {
         fdef.restitution = 0f;
         fdef.filter.categoryBits = MarioBros.ENEMY_HEAD_BIT;
         b2body.createFixture(fdef).setUserData(this);
-
-
     }
 
     public void draw(Batch batch){
@@ -96,7 +84,6 @@ public class Raft extends Enemy {
 
     @Override
     public void flamed(FireBall fireball) {
-
 
     }
 

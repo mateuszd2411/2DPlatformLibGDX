@@ -38,13 +38,11 @@ public class GameOverScreen implements Screen {
         table.row();
         table.add(playAgainLabel).expandX().padTop(10f);
 
-
         stage.addActor(table);
     }
 
     @Override
     public void show() {
-
 
     }
 
@@ -84,6 +82,5 @@ public class GameOverScreen implements Screen {
     @Override
     public void dispose() {
         stage.dispose();
-
     }
 }

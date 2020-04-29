@@ -11,26 +11,17 @@ import com.mat.mariobros.Sprites.Items.Item;
 import com.mat.mariobros.Sprites.Mario;
 import com.mat.mariobros.Sprites.Other.Bomb;
 import com.mat.mariobros.Sprites.Other.FireBall;
-import com.mat.mariobros.Sprites.Other.LevelEnd;
 import com.mat.mariobros.Sprites.TitleObjects.InteractiveTileObject;
-
-
 
 public class WorldContactListener implements ContactListener {
     @Override
     public void beginContact(Contact contact) {
-
         Fixture fixA = contact.getFixtureA();
         Fixture fixB = contact.getFixtureB();
 
         int cDef = fixA.getFilterData().categoryBits | fixB.getFilterData().categoryBits;
 
-
-
-
-
         switch (cDef){
-
             case  MarioBros.MARIO_HEAD_BIT | MarioBros.BRICK_BIT:
             case  MarioBros.MARIO_HEAD_BIT | MarioBros.COIN_BIT:
                 if (fixA.getFilterData().categoryBits == MarioBros.MARIO_HEAD_BIT)
@@ -52,8 +43,6 @@ public class WorldContactListener implements ContactListener {
                 else
                     ((Enemy)fixB.getUserData()).reverseVelocity(true,false);
                 break;
-
-
 
             case MarioBros.MARIO_BIT | MarioBros.ENEMY_BIT:
                 if (fixA.getFilterData().categoryBits == MarioBros.MARIO_BIT)
@@ -80,7 +69,6 @@ public class WorldContactListener implements ContactListener {
                 else
                     ((Item)fixB.getUserData()).use((Mario) fixA.getUserData());
                 break;
-
             ///fire
             case MarioBros.FIREBALL_BIT | MarioBros.OBJECT_BIT:
                 if(fixA.getFilterData().categoryBits == MarioBros.FIREBALL_BIT)
@@ -99,25 +87,19 @@ public class WorldContactListener implements ContactListener {
             ///fire
 
             ///ball
-
             case MarioBros.BOMB_BIT | MarioBros.ENEMY_BIT:
             case MarioBros.BOMB_BIT | MarioBros.ENEMY_HEAD_BIT:
                 if (fixA.getFilterData().categoryBits == MarioBros.BOMB_BIT)
                     ((Enemy) fixB.getUserData()).flamed((Bomb) fixA.getUserData());
                 else
                     ((Enemy) fixA.getUserData()).flamed((Bomb) fixB.getUserData());
-
             ///ball
-
-
-
         }
 
     }
 
     @Override
     public void endContact(Contact contact) {
-
 
     }
 

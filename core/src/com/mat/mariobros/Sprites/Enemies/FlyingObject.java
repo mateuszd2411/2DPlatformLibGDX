@@ -10,7 +10,6 @@ import com.badlogic.gdx.utils.Timer;
 import com.mat.mariobros.MarioBros;
 
 public class FlyingObject extends Image {
-
     public final static String MONEY = "badlogic.jpg";
     public static boolean touch = false;
 
@@ -35,16 +34,6 @@ public class FlyingObject extends Image {
                 System.out.println("touched");
                 touch = true;
 
-//                Timer.schedule(new Timer.Task() {
-//                    @Override
-//                    public void run() {
-//                        System.out.println("mor");
-//
-//
-//                    }
-//                },2,50);
-
-
                 Timer.schedule(new Timer.Task(){
                     @Override
                     public void run() {
@@ -57,11 +46,9 @@ public class FlyingObject extends Image {
                 return super.touchDown(event, x, y, pointer, button);
             }
         });
-
     }
 
     public void flylikeHell(){
-
         System.out.println("hell");
         Action a = Actions.parallel(
                 Actions.moveBy(300,200,5),
@@ -81,8 +68,5 @@ public class FlyingObject extends Image {
         });
 
         this.addAction(Actions.sequence(a,b,c));
-
-
     }
-
 }
