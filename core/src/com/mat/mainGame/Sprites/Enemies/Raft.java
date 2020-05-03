@@ -55,6 +55,7 @@ public class Raft extends Enemy {
                 MainGame.PLAYER_BIT |
                 MainGame.FIREBALL_BIT|
                 MainGame.BOMB_BIT;
+        //Add here new colder (like air) for flying raft
 
         fdef.shape = shape;
         b2body.createFixture(fdef).setUserData(this);

@@ -34,6 +34,7 @@ public class MainGame
 	public void create() {
 		batch = new SpriteBatch();
 		manager = new AssetManager();
+		//Sounds
 		manager.load("audio/music/music.mp3", Music.class);
 		manager.load("audio/sounds/coin.wav", Sound.class);
 		manager.load("audio/sounds/bump.wav", Sound.class);

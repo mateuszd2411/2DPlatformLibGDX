@@ -22,6 +22,7 @@ public class Fire extends Enemy {
         super(screen, x, y);
         frames = new Array<TextureRegion>();
         for (int i = 0; i < 3; i++)
+            //Add random switch witch a few animations
             frames.add(new TextureRegion(screen.getAtlas().findRegion("fire"), i * 22,0,22,18));
         fireAnimation = new Animation(0.2f, frames);
         stateTime = 0;

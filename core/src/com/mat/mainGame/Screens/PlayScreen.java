@@ -79,6 +79,7 @@ public class PlayScreen
         cameraZoomOnPlayer();
     }
 
+    //Shaking Camera
     private void randomRotateAndZoomCam() {
         if (Player.b2body.getPosition().x > 18 && Player.b2body.getPosition().x < 24  ||
                 Player.b2body.getPosition().x > 62 && Player.b2body.getPosition().x < 67

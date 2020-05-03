@@ -25,9 +25,8 @@ public class BasicDialog extends Image {
         label = new Label("CZAS", new Label.LabelStyle(new BitmapFont(), Color.FIREBRICK));
         label.setPosition(200,400);
 
+        //add some function after click dialog
         this.addListener(new ClickListener(){
-//
-
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 fadeOutDialog();
@@ -45,6 +44,7 @@ public class BasicDialog extends Image {
 
     public boolean fadeOutDialog() {
         System.out.println("fade");
+        //here put function like super speed, jump etc
         BasicDialog.this.remove();
         label.remove();
         return true;

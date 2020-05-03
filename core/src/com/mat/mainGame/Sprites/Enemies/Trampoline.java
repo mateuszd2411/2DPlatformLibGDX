@@ -18,7 +18,7 @@ import com.mat.mainGame.Sprites.Other.FireBall;
 
 public class Trampoline extends Enemy {
     private float stateTime;
-    private Animation walkAnimation;
+    private Animation animation;
     private Array<TextureRegion> frames;
 
     public Trampoline(PlayScreen screen, float x, float y) {
@@ -26,7 +26,7 @@ public class Trampoline extends Enemy {
         frames = new Array<TextureRegion>();
         for (int i = 0; i < 2; i++)
             frames.add(new TextureRegion(screen.getAtlas().findRegion("trampoline"), i * 33,0,33,11));
-        walkAnimation = new Animation(0.5f, frames);
+        animation = new Animation(0.5f, frames);
         stateTime = 0;
         setBounds(getX(), getY(), 70/ MainGame.PPM,16 / MainGame.PPM);
     }
@@ -35,7 +35,7 @@ public class Trampoline extends Enemy {
         stateTime += dt;
             b2body.setLinearVelocity(velocity);
             setPosition(b2body.getPosition().x - getWidth() / 2, b2body.getPosition().y - getHeight() / 2);
-            setRegion((TextureRegion) walkAnimation.getKeyFrame(stateTime, true));
+            setRegion((TextureRegion) animation.getKeyFrame(stateTime, true));
     }
 
     @Override

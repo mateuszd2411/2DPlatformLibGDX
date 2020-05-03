@@ -98,10 +98,10 @@ public class Player extends Sprite {
         //create dead mario texture region
         playerDead = new TextureRegion(screen.getAtlas().findRegion("little_player"), 96, 0, 16, 16);
 
-        //define mario in Box2d
+        //define player in Box2d
         definePlayer();
 
-        //set initial values for marios location, width and height. And initial frame as playerStand.
+        //set initial values for player location, width and height. And initial frame as playerStand.
         setBounds(0, 0, 16 / MainGame.PPM, 16 / MainGame.PPM);
         setRegion(playerStand);
 
@@ -113,10 +113,9 @@ public class Player extends Sprite {
 
     public void update(float dt){
 
-        // time is up : too late mario dies T_T
+        // time is up : too late player dies T_T
         // the !isDead() method is used to prevent multiple invocation
         // of "die music" and jumping
-        // there is probably better ways to do that but it works for now.
         if (screen.getHud().isTimeUp() && !isDead()) {
             die();
         }
@@ -126,7 +125,7 @@ public class Player extends Sprite {
         setPosition(b2body.getPosition().x - getWidth() / 2, b2body.getPosition().y - getHeight() / 2);
         else
             setPosition(b2body.getPosition().x - getWidth() / 2, b2body.getPosition().y - getHeight() / 2);
-        //update sprite with the correct frame depending on marios current action
+        //update sprite with the correct frame depending on player current action
         setRegion(getFrame(dt));
         if(timeToDefineBigPlayer)
             defineBigPlayer();
@@ -375,7 +374,7 @@ public class Player extends Sprite {
         bdef = new BodyDef();
 
         Gdx.gl.glClearColor(.0f, 0.0f, 0.f, 1.0f);
-        bdef.position.set(1450 / MainGame.PPM, 40 / MainGame.PPM);
+        bdef.position.set(40 / MainGame.PPM, 40 / MainGame.PPM);
         bdef.type = BodyDef.BodyType.DynamicBody;
         b2body = world.createBody(bdef);
 
@@ -386,7 +385,7 @@ public class Player extends Sprite {
         fdef.filter.maskBits = MainGame.GROUND_BIT |
                 MainGame.COIN_BIT |
                 MainGame.BRICK_BIT |
-                MainGame.ENEMY_BIT |
+//                MainGame.ENEMY_BIT |
                 MainGame.OBJECT_BIT |
                 MainGame.ENEMY_HEAD_BIT |
                 MainGame.ITEM_BIT;
@@ -407,6 +406,7 @@ public class Player extends Sprite {
         fireballs.add(new FireBall(screen, b2body.getPosition().x, b2body.getPosition().y, runningRight ? true : false));
     }
 
+    //add in the future
     public void fireG(){
         fireballs.add(new FireBall(screen, b2body.getPosition().x, b2body.getPosition().y, runningRight ? true : false));
     }
