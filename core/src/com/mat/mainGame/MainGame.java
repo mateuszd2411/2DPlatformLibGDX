@@ -36,6 +36,8 @@ public class MainGame
 		manager = new AssetManager();
 		//Sounds
 		manager.load("audio/music/music.mp3", Music.class);
+		manager.load("audio/music/boosMusic.mp3", Music.class);
+
 		manager.load("audio/sounds/coin.wav", Sound.class);
 		manager.load("audio/sounds/bump.wav", Sound.class);
 		manager.load("audio/sounds/breakblock.wav", Sound.class);

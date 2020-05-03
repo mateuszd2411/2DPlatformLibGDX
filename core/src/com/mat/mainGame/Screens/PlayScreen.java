@@ -50,6 +50,7 @@ public class PlayScreen
     private TiledMap map;
     private TmxMapLoader maploader;
     private Music music;
+    private Music boosMusic;
     private Player player;
     private OrthogonalTiledMapRenderer renderer;
     private World world;
@@ -68,22 +69,29 @@ public class PlayScreen
         this.creator = new B2WorldCreator(this);
         this.player = new Player(this);
         this.world.setContactListener(new WorldContactListener());
+//        play  music
         this.music = MainGame.manager.get("audio/music/music.mp3", Music.class);
         this.music.setLooping(true);
         this.music.setVolume(0.1f);
         this.music.play();
+        this.boosMusic = MainGame.manager.get("audio/music/boosMusic.mp3", Music.class);
+        this.boosMusic.stop();
+
         this.items = new Array();
         this.itemsToSpawn = new LinkedBlockingQueue();
 
-        randomRotateAndZoomCam();
+        randomRotateAndZoomCamBooseMusic();
         cameraZoomOnPlayer();
     }
 
-    //Shaking Camera
-    private void randomRotateAndZoomCam() {
+    //Shaking Camera and boos music
+    private void randomRotateAndZoomCamBooseMusic() {
         if (Player.b2body.getPosition().x > 18 && Player.b2body.getPosition().x < 24  ||
                 Player.b2body.getPosition().x > 62 && Player.b2body.getPosition().x < 67
         ){
+            music.pause();
+            boosMusic.setLooping(true);
+            boosMusic.play();
             //show random after 20 s
             //earthquake after 20 s
             Timer.schedule(new Timer.Task() {
@@ -109,6 +117,8 @@ public class PlayScreen
             },1.f,0.1f);
         }else {
             gamecam.rotate(((float) -Math.atan2(gamecam.up.x, gamecam.up.y) * MathUtils.radiansToDegrees)  );
+            boosMusic.stop();
+            music.play();
         }
     }
 
@@ -296,7 +306,7 @@ public class PlayScreen
         this.gamecam.update();
         this.renderer.setView(this.gamecam);
 
-        randomRotateAndZoomCam();
+        randomRotateAndZoomCamBooseMusic();
         cameraZoomOnPlayer();
     }
 }

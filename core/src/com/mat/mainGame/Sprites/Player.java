@@ -374,7 +374,7 @@ public class Player extends Sprite {
         bdef = new BodyDef();
 
         Gdx.gl.glClearColor(.0f, 0.0f, 0.f, 1.0f);
-        bdef.position.set(40 / MainGame.PPM, 40 / MainGame.PPM);
+        bdef.position.set(1600 / MainGame.PPM, 40 / MainGame.PPM);
         bdef.type = BodyDef.BodyType.DynamicBody;
         b2body = world.createBody(bdef);
 
