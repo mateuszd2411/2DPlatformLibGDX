@@ -126,6 +126,8 @@ public class PlayScreen
         if (Player.b2body.getPosition().x > 79 && Player.b2body.getPosition().x < 81 &&
                 Player.b2body.getPosition().y > 1 && Player.b2body.getPosition().y < 2
         ){
+            Player.b2body.setLinearVelocity(0.5f,0);
+            Player.bdef.position.set(0.3f, 0);
             gamecam.zoom -=0.008f;
             if (gamecam.zoom < 0.25f){
                 gamecam.zoom = 0.25f;
@@ -135,10 +137,9 @@ public class PlayScreen
                 public void run() {
                     System.out.println("timer run");
                     MainGame.manager.get("audio/sounds/stomp.wav", Sound.class).play();
-                    Player.b2body.setTransform(87,1,0);
-
+                    Player.b2body.setTransform(87,0.35f,0);
                 }
-            },2f,0.00001f,1);
+            },1.5f,0.01f,1);
         }else {
             gamecam.zoom = 1f;
         }
