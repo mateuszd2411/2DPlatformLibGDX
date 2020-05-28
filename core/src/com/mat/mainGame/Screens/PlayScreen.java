@@ -61,7 +61,7 @@ public class PlayScreen
         this.gamePort = new FitViewport(4.0f, 2.08f, (Camera)this.gamecam);
         this.hud = new Hud(MainGame.batch);
         this.maploader = new TmxMapLoader();
-        this.map = this.maploader.load("level1.tmx");
+        this.map = this.maploader.load("level1.tmx");       //first lvl x= 8240 (end=8464)
         this.renderer = new OrthogonalTiledMapRenderer(this.map, 0.01f);
         this.gamecam.position.set(this.gamePort.getWorldWidth() / 2.0f, this.gamePort.getWorldHeight() / 2.0f, 0.0f);               /////////this.gamecam.position.set(this.gamePort.getWorldWidth() / 2.0f, this.gamePort.getWorldHeight() / 2.0f, 0.0f);
         this.world = new World(new Vector2(0.0f, -10.0f), true);        ///grawitacja
