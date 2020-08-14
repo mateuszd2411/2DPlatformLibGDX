@@ -3,6 +3,8 @@
 
 <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=f2aYKAV4cCU&feature=youtu.be">Link Youtube</a>
 
+<a href="http://chriscoyier.net" target="_blank">This link will open in new window/tab</a>
+
 <a href="https://www.youtube.com/watch?v=f2aYKAV4cCU&feature=youtu.be">Link</a>
 
 https://www.youtube.com/watch?v=f2aYKAV4cCU&feature=youtu.be
